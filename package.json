@@ -1,0 +1,28 @@
+{
+  "name": "bookclub_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinnyA3/bookclub-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinnyA3/bookclub-app/issues"
+  },
+  "homepage": "https://github.com/vinnyA3/bookclub-app#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0",
+    "node-sass": "^3.4.2",
+    "node-sass-middleware": "^0.9.7"
+  }
+}
