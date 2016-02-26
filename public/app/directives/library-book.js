@@ -6,7 +6,8 @@ angular.module('libraryBookDirective',[])
       replace: true,
       scope:{
         book: "="
-      },
+      }
+      /*
       link:function(scope,element,attrs){
         element.css({
           'background':'url('+scope.book.src+')',
@@ -14,6 +15,6 @@ angular.module('libraryBookDirective',[])
           'background-position': 'center',
           'background-repeat': 'no-repeat'
         });
-      }
+      }*/
     }
   });
