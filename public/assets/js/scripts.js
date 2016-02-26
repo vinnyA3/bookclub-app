@@ -1,5 +1,6 @@
 (function(){
-  
+  //use angular to control this........
+
   var model = {};
 
   var modelView = {
