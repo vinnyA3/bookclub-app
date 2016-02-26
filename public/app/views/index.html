@@ -3,21 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <title>Book Club</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link href="main.css" type="text/css" rel="stylesheet">
 </head>
-<body>
-    <nav class="drawer-nav">
-        <h1>Drawer</h1>
-    </nav>
-    <div class="main">
-      <span class="main-hamburger fa fa-bars"></span>
-      <h1>View goes here</h1>
-    </div>
-<!-- main script -->
-<script src="assets/js/scripts.js"></script>
+<body ng-app="mainApp">
+
+  <div class="main-view" ui-view></div>
+
+<!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+<!-- Main App -->
+<script src="app/app.js"></script>
+<!-- App Routes -->
+<script src="app/app-routes.js"></script>
+<!-- Controllers -->
+<!-- Services -->
+<!-- Directives -->
+<script src="app/directives/navbar-bar.js"></script>
+<!-- main script
+<script src="assets/js/scripts.js"></script> -->
 </body>
 </html>
