@@ -1,5 +1,25 @@
 <div class="nav-view" ui-view="nav"></div>
 <div class="main account">
   <navbar-toggle></navbar-toggle>
-  <h1>Account View</h1>
+  <div class="account-image-container box">
+      <div class="account-image"></div>
+  </div>
+
+  <div class="account-user-info-container box">
+    <h1>Vinny</h1>
+    <p><i class="fa fa-map-marker account-user-info-marker"></i> &nbsp;Manhattan, New York<p>
+    <p><i class="fa fa-envelope account-user-info-mail"></i> vinaceto@yahoo.com<p>
+    <a ui-sref="your-books"><button class=""><i class="fa fa-book account-user-info-mail"></i> Books</button></a>
+  </div>
+
+  <div class="account-update-info-container box">
+    <h2>Update Info</h2>
+    <form class="account-update-info-form">
+      <input type="text" class="account-update-info-form-name" placeholder="Name">
+      <input type="text" class="account-update-info-form-location" placeholder="Location">
+      <input type="text" class="account-update-info-form-email" placeholder="Email">
+      <input type="submit" class="account-update-info-form-submit" value="Update">
+    </form>
+  </div>
+
 </div>
