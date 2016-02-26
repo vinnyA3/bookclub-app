@@ -24,6 +24,7 @@ body,.main-view{
 
 img,embed,video{
   max-width: 100%;
+  height: auto;
 }
 
 a{
@@ -92,3 +93,25 @@ a{
       cursor: pointer;
     }
   }
+
+/* ================ BOOK LIBRARY  =========================== */
+.library{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+  .library-book-container{
+    width: 100%;
+    padding: 8px;
+    height: 280px;
+    overflow: hidden;
+    @include break(sm) {
+      width: 50%;
+    }
+    @include break(md) {
+      width: 33%;
+    }
+  }
+    .library-book-container-book{
+      width: 100%;
+    }
