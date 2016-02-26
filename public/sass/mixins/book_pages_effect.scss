@@ -1,0 +1,12 @@
+@mixin pages($page-offset){
+  content: '';
+  position:absolute;
+  border:1px solid transparent;
+  box-shadow: 0 2px 4px 0 rgba(#000, .3);
+  border-radius: 2px;
+  z-index: -1;
+  top:0px;
+  left: $page-offset;
+  right: $page-offset;
+  bottom: 0px;
+}

@@ -3,7 +3,9 @@
 /* ===============  MIXINS  =================== */
 @import "mixins/default_link_styles.scss";
 @import "mixins/media_queries.scss";
-@import "mixins/transform_prefixes.scss";
+@import "mixins/book_pages_effect.scss";
+@import "mixins/transform_translate_prefixes.scss";
+@import "mixins/transform_rotate_prefixes.scss";
 
 /*  ==============  HOUSEKEEP/DEFAULT STYLES == */
 *{
@@ -11,6 +13,7 @@
 }
 
 html,body,.main,.main-view{
+  background:rgb(237, 237, 237);
   width:100%;
   height:100%;
   margin:0;
@@ -53,6 +56,7 @@ a{
     width: 300px;
     padding: 25px;
     position: absolute;
+    z-index: 2000;
     box-shadow: 3px 0px 6px 6px rgba(0,0,0,0.4);
     @include transform-translate(-300px,0);
     transition: transform 0.3s ease;
@@ -72,13 +76,24 @@ a{
       margin:0 auto;
       bottom:30px;
     }
+    .drawer-nav-profile-inbox{
+      position: relative;
+      .drawer-nav-profile-inbox-alert{
+        position:relative;
+        z-index: 3;
+        background: red;
+        border-radius: 20px;
+        height: 7px;
+        width: 7px;
+      }
+    }
+
     .js-drawer-nav-open{
       @include transform-translate(0,0);
     }
 
 /* ================  MAIN DIV  ======================== */
 .main{
-  background:rgb(237, 237, 237);
   color: rgb(43, 43, 43);
   padding: 30px;
   @include break(lg) {
@@ -104,6 +119,7 @@ a{
     width: 100%;
     padding: 8px;
     height: 280px;
+    z-index:3;
     overflow: hidden;
     @include break(sm) {
       width: 50%;
@@ -118,28 +134,21 @@ a{
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
       box-shadow: 0 2px 4px 0 rgba(#000, .1), 0 9px 20px 0 rgba(#000, .25);
-      z-index: 1;
+      z-index: 4;
       overflow: hidden;
       position: relative;
       transition: box-shadow .3s linear;
       &:before{
-        content: '';
-        position:absolute;
-        border:1px solid transparent;
-        box-shadow: 0 2px 4px 0 rgba(#000, .3);
-        border-top:1px solid transparent;
-        border-bottom:1px solid transparent;
-        border-radius: 2px;
-        top:0px;
-        left: 4px;
-        right: 4px;
-        bottom: 0px;
+        @include pages(4px);
+      }
+      &:after{
+        @include pages(8px);
       }
       &:hover{
         cursor: pointer;
         box-shadow: 0 2px 4px 0 rgba(#000, .25), 0 9px 20px 0 rgba(#000, .45);
         img {
-          transform: rotateY(-25deg);
+          @include transform-rotateY(-25deg);
           box-shadow: 1px 1px 5px 5px rgba(#000, .2);
         }
       }
@@ -149,7 +158,8 @@ a{
         height: inherit;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
+        z-index: 5;
         transform-origin: 0 50%;
-        transform: rotateY(0);
+        @include transform-rotateY(0);
         transition: all .45s ease;
       }
