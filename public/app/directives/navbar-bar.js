@@ -8,9 +8,7 @@ angular.module('navbarButtonDirective',[])
         var mainView = element.parent().parent().parent(),
             mainDiv = element.parent().parent(),
             nav = mainView[0].querySelector('.drawer-nav');
-            console.log(mainView);
-            console.log(mainDiv);
-            console.log(nav);
+  
         element.on('click',function(e){
           nav.classList.toggle('js-drawer-nav-open');
           e.stopPropagation();
