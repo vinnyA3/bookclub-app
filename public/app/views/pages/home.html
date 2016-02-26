@@ -2,10 +2,10 @@
 
 <div class="main library">
   <navbar-toggle></navbar-toggle>
-  <h1>Book List</h1>
+  <h1>&nbsp;Library</h1>
   <div class="library">
     <div ng-repeat="book in library.libraryBooks" class="library-book-container">
-      <library-book book="book"></library-book>
+      <a ui-sref="user({id:book.id})"><library-book book="book"></library-book></a>
     </div>
   </div>
 </div>
