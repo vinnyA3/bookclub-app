@@ -18,7 +18,7 @@ angular.module('appRoutes',['ui.router'])
       .state('inbox', {
          url:'/inbox',
          views:{
-           '':{templateUrl:'app/views/pages/inbox.html'},
+           '':{templateUrl:'app/views/pages/inbox.html', controller: 'inboxController as inbox'},
            'nav@inbox':{templateUrl:'app/views/partials/navbar.html'}
          }
       })
@@ -30,7 +30,7 @@ angular.module('appRoutes',['ui.router'])
          }
       })
       .state('user',{
-        url:'/user/:id',
+        url:'/user/:id?:book_id',
         views:{
           '':{templateUrl:'app/views/pages/user.html',
           controller:function($stateParams,$scope){
