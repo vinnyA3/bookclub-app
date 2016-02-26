@@ -1,0 +1,71 @@
+/* =============  ACCOUNT VIEW STYLES  =============== */
+.account{
+  display: flex;
+  flex-wrap: wrap;
+}
+  .box{
+    width: 100%;
+    height: 250px;
+  }
+  .account-image-container{
+    padding:8px;
+    @include break(lg) {
+      width: 50%;
+    }
+  }
+  .account-image{
+    height: 100%;
+    width: 100%;
+    background:url('../../assets/images/sm-vinny-profile.jpg');
+    background-position: 30% 15%;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(#000, .25);
+  }
+
+  .account-user-info-container{
+    text-align: center;
+    padding:8px;
+    @include break(lg) {
+      width: 50%
+    }
+  }
+    .account-user-info-marker{
+      color:red;
+    }
+    .account-user-info-mail{
+      color: rgb(177, 173, 255);
+    }
+
+
+    /*  UPDATE INFO */
+    .account-update-info-container{
+      padding:8px;
+      @include break(lg) {
+        width: 50%
+      }
+    }
+      .account-update-info-form{
+        width: 100%;
+      }
+      .account-update-info-form input[type="text"]{
+        height: 35px;
+        width: 100%;
+        padding-left: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
+        margin-bottom: 12px;
+      }
+      .account-update-info-form input[type="submit"]{
+        width: 30%;
+        height: 35px;
+        border: none;
+        border-radius: 2px;
+        font-weight: bold;
+        transition: all 0.4s ease;
+        &:hover{
+          cursor: pointer;
+          background: #242249;
+          color: white;
+        }
+      }
