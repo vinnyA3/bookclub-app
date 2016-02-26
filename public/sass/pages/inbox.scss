@@ -1,0 +1,54 @@
+/* =============  INBOX  ============ */
+.swap-container{
+    width:100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+  .swap{
+      width: 100%;
+      padding: 4px;
+      height:150px;
+      @include break(md) {
+        width: 33%;
+      }
+  }
+    .swap-content{
+      height:100%;
+      width:100%;
+      background: rgb(244, 244, 244);
+      border-radius: 2px;
+      box-shadow: 0 2px 4px 0 rgba(#000, .25);
+      position: relative;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-left: 5px;
+    }
+      .swap-content-close{
+        position: absolute;
+        top:8px;
+        right:8px;
+        color: rgba(68, 68, 68,0.4);
+        transition: all 0.4s ease;
+        &:hover{
+          cursor: pointer;
+          color:red;
+        }
+      }
+      .swap-content-approve{
+        position: absolute;
+        bottom:8px;
+        left:8px;
+        background: #7cce71;
+        border: none;
+        padding: 10px;
+        border-radius:2px;
+        font-weight: bold;
+        color:#fff;
+        transition: all 0.4s ease;
+        &:hover{
+          cursor: pointer;
+          background: #4f9345;
+        }
+      }
