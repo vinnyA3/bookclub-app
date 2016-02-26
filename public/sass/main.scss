@@ -10,18 +10,16 @@
   box-sizing: border-box;
 }
 
-html,body,.main{
+html,body,.main,.main-view{
   width:100%;
   height:100%;
   margin:0;
 }
 
-body{
+body,.main-view{
   font-family: helvetica, arial, sans-serif;
-  @include break(lg) {
-    display: flex;
-    flex-flow: row nowrap;
-  }
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 img,embed,video{
@@ -42,34 +40,52 @@ a{
 }
 
 /* =============== DRAWER NAVIGATION ================== */
-.drawer-nav{
-  background-color: rgb(36, 34, 73);
-  color:white;
-  height:100%;
-  width: 300px;
-  position: absolute;
-  box-shadow: 3px 0px 6px 6px rgba(0,0,0,0.4);
-  @include transform-translate(-300px,0);
-  transition: transform 0.3s ease;
-  @include break(lg) {
-    position: relative;
-    transform: translate(0,0);
-  }
+/* nav view bug override */
+.nav-view{
+  height: 100%;
 }
-
-  .js-drawer-nav-open{
-    @include transform-translate(0,0);
+  .drawer-nav{
+    background-color: rgb(36, 34, 73);
+    color:rgb(237, 237, 237);
+    text-align: center;
+    height:100%;
+    width: 300px;
+    padding: 25px;
+    position: absolute;
+    box-shadow: 3px 0px 6px 6px rgba(0,0,0,0.4);
+    @include transform-translate(-300px,0);
+    transition: transform 0.3s ease;
+    @include break(lg) {
+      position: relative;
+      transform: translate(0,0);
+    }
   }
+    .drawer-nav-profile{
+      display: block;
+      font-size: 4em;
+    }
+    .drawer-nav-creator{
+      position: absolute;
+      left:0;
+      right:0;
+      margin:0 auto;
+      bottom:30px;
+    }
+    .js-drawer-nav-open{
+      @include transform-translate(0,0);
+    }
 
 /* ================  MAIN DIV  ======================== */
 .main{
+  background:rgb(237, 237, 237);
+  color: rgb(43, 43, 43);
   padding: 30px;
   @include break(lg) {
       flex-grow: 1;
   };
 }
   .main-hamburger{
-    @include break(lg){
+    @include break(lg) {
       display:none;
     }
     &:hover{
