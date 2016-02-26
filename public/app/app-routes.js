@@ -21,6 +21,24 @@ angular.module('appRoutes',['ui.router'])
            '':{templateUrl:'app/views/pages/inbox.html'},
            'nav@inbox':{templateUrl:'app/views/partials/navbar.html'}
          }
+      })
+      .state('your-books',{
+         url:'/your-books',
+         views:{
+           '':{templateUrl:'app/views/pages/my-books.html', controller: 'yourBooksController as books'},
+           'nav@your-books':{templateUrl:'app/views/partials/navbar.html'}
+         }
+      })
+      .state('user',{
+        url:'/user/:id',
+        views:{
+          '':{templateUrl:'app/views/pages/user.html',
+          controller:function($stateParams,$scope){
+            $scope.id = $stateParams;
+          }
+        },
+          'nav@user':{templateUrl:'app/views/partials/navbar.html'}
+        }
       });
 
       //otherwise, redirect to home
