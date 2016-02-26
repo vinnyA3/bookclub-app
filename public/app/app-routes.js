@@ -4,8 +4,8 @@ angular.module('appRoutes',['ui.router'])
       .state('home', {
           url:'/',
           views:{
-            '':{templateUrl:'app/views/pages/home.html'},
-            'nav@home': {templateUrl: 'app/views/partials/navbar.html'}
+            '':{templateUrl:'app/views/pages/home.html', controller: 'libraryController as library'},
+            'nav@home': {templateUrl: 'app/views/partials/navbar.html'},
           }
       })
       .state('account', {
