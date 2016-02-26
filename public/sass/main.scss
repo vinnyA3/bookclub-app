@@ -7,6 +7,7 @@
 @import "mixins/transform_translate_prefixes.scss";
 @import "mixins/transform_rotate_prefixes.scss";
 
+
 /*  ==============  HOUSEKEEP/DEFAULT STYLES == */
 *{
   box-sizing: border-box;
@@ -55,13 +56,16 @@ a{
     height:100%;
     width: 300px;
     padding: 25px;
-    position: absolute;
+    position: fixed;
     z-index: 2000;
     box-shadow: 3px 0px 6px 6px rgba(0,0,0,0.4);
     @include transform-translate(-300px,0);
     transition: transform 0.3s ease;
     @include break(lg) {
-      position: relative;
+      position: fixed;
+      top:0px;
+      bottom:0px;
+      left:0px;
       transform: translate(0,0);
     }
   }
@@ -69,12 +73,15 @@ a{
       display: block;
       font-size: 4em;
     }
-    .drawer-nav-creator{
+    .drawer-nav-creator-list{
+      display: inline-block;
       position: absolute;
-      left:0;
-      right:0;
-      margin:0 auto;
-      bottom:30px;
+      left:48px;
+      bottom:14px;
+      .drawer-nav-creator-list-item{
+        list-style-type: none;
+        display: inline;
+      }
     }
     .drawer-nav-profile-inbox{
       position: relative;
@@ -98,6 +105,7 @@ a{
   padding: 30px;
   @include break(lg) {
       flex-grow: 1;
+      margin-left:300px;
   };
 }
   .main-hamburger{
@@ -109,6 +117,9 @@ a{
     }
   }
 
+/* ================ PAGES =================================== */
+@import 'pages/account.scss';
+@import 'pages/yourbooks.scss';
 /* ================ BOOK LIBRARY  =========================== */
 .library{
   width: 100%;
