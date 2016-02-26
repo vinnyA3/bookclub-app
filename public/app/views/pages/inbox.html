@@ -1,5 +1,75 @@
 <div class="nav-view" ui-view="nav"></div>
-<div class="main account">
+<div class="main inbox">
   <navbar-toggle></navbar-toggle>
-  <h1>Inbox View</h1>
-</div>
+  <h1>Swap requests for you</h1>
+  <div class="swap-container">
+      <!--ng repeat -->
+      <div class="swap" ng-repeat="request in inbox.swapRequests">
+          <div class="swap-content">
+            <p><strong>{{request.name}}</strong><br><br>
+               {{request.book}}<br>
+              <button class="swap-content-approve">Approve?</button>
+              <span class="swap-content-close fa fa-close"></span>
+            </p>
+          </div>
+      </div>
+  </div>
+
+
+
+  <h1>Your outstanding swap requests</h1>
+  <div class="inbox-table-container">
+    <table class="inbox-table">
+      <thead>
+        <tr class="inbox-table-row">
+          <th>To</th>
+          <th>Swap For</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <h1>Your approved swap requests</h1>
+  <div class="inbox-table-container">
+    <table class="inbox-table">
+      <thead>
+        <tr class="inbox-table-row">
+          <th>To</th>
+          <th>Swap For</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+</div><!--end main -->
