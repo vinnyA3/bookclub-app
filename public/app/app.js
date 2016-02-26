@@ -2,6 +2,7 @@ angular.module('mainApp',[
   'ui.router',
   'libraryCtrl',
   'yourBooksCtrl',
+  'inboxCtrl',
   'navbarButtonDirective',
   'libraryBookDirective',
   'appRoutes'
