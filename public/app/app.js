@@ -5,5 +5,6 @@ angular.module('mainApp',[
   'inboxCtrl',
   'navbarButtonDirective',
   'libraryBookDirective',
+  'modalDialogDirective',
   'appRoutes'
 ]);
