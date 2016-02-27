@@ -21,7 +21,7 @@ html,body,.main,.main-view{
 }
 
 body,.main-view{
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'Adamina', serif;
   display: flex;
   flex-flow: row nowrap;
 }
@@ -121,6 +121,8 @@ a{
 @import 'pages/account.scss';
 @import 'pages/yourbooks.scss';
 @import 'pages/inbox.scss';
+/* ================ PARTIALS' STYLES ========================= */
+@import 'pages/partials/modal.scss';
 /* ================ BOOK LIBRARY  =========================== */
 .library{
   width: 100%;
