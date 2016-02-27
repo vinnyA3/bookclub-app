@@ -1,14 +1,32 @@
 <div class="nav-view" ui-view="nav"></div>
 <div class="main inbox">
   <navbar-toggle></navbar-toggle>
-  <h1>Swap requests for you</h1>
+
+  <h2>Swap requests for you</h2>
   <div class="swap-container">
       <!--ng repeat -->
       <div class="swap" ng-repeat="request in inbox.swapRequests">
           <div class="swap-content">
-            <p><strong>{{request.name}}</strong><br><br>
-               {{request.book}}<br>
-              <button class="swap-content-approve">Approve?</button>
+            <p>From: <strong>{{request.name}}</strong><br><br>
+               Book: <strong>{{request.book}}</strong><br>
+              <button ng-click="inbox.toggleModal(request.name, request.book)" class="swap-content-approve">Approve?</button>
+              <span class="swap-content-close fa fa-close"></span>
+            </p>
+          </div>
+      </div>
+      <modal-dialog user="inbox.approvedInfo.name" book="inbox.approvedInfo.book" show='inbox.modalShown' width='90%' height='auto'>
+          <p>{{inbox.approvedInfo.name}}, {{inbox.approvedInfo.book}}</p>
+      </modal-dialog>
+  </div>
+
+  <h2>Your outstanding swap requests</h2>
+  <div class="swap-container">
+      <!--ng repeat -->
+      <div class="swap" ng-repeat="request in inbox.swapRequests">
+          <div class="swap-content">
+            <p>User: <strong>{{request.name}}</strong><br><br>
+               Book: <strong>{{request.book}}</strong><br><br>
+               Status: Pending ...
               <span class="swap-content-close fa fa-close"></span>
             </p>
           </div>
@@ -17,59 +35,19 @@
 
 
 
-  <h1>Your outstanding swap requests</h1>
-  <div class="inbox-table-container">
-    <table class="inbox-table">
-      <thead>
-        <tr class="inbox-table-row">
-          <th>To</th>
-          <th>Swap For</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </tfoot>
-    </table>
+  <h2>Your approved swap requests</h2>
+  <div class="swap-container">
+      <!--ng repeat -->
+      <div class="swap" ng-repeat="request in inbox.swapRequests">
+          <div class="swap-content">
+            <p><strong>{{request.name}}</strong> approved swap!<br><br>
+             <strong>{{request.book}}</strong><br>
+             <i class="fa fa-retweet"></i> for<br>
+             <strong>the Prince</strong>
+              <span class="swap-content-close fa fa-close"></span>
+            </p>
+          </div>
+      </div>
   </div>
-
-  <h1>Your approved swap requests</h1>
-  <div class="inbox-table-container">
-    <table class="inbox-table">
-      <thead>
-        <tr class="inbox-table-row">
-          <th>To</th>
-          <th>Swap For</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
 
 </div><!--end main -->
