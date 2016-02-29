@@ -1,7 +1,4 @@
-var User = require('../models/user.js'),
-    OutstandingRequest = require('../models/outstanding-requests.js'),
-    SwapRequests = require('../models/swap-requests.js'),
-    config = require('../../config/config'),
+var config = require('../../config/config'),
     jwt = require('jwt-simple'),
     moment = require('moment');
 
@@ -83,5 +80,8 @@ module.exports = function(app,express){
 				}
 			});
 	});
+
+  //return express router
+  return router;
 
 };
