@@ -41,6 +41,10 @@ app.use(
 //set the location for the static files
 app.use(express.static(path.join(__dirname,'/public')));
 
+//include AUTH routes
+var authRoutes = require('./app/routes/auth-routes.js')(app,express);
+app.use('/auth',authRoutes);
+
 //get * route
 app.get('*', function(req,res){
   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
@@ -50,4 +54,3 @@ app.get('*', function(req,res){
 server.listen(port, function(){
   console.log('Server is listening on port: ' + port + '...');
 });
-
