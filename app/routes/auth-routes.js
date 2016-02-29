@@ -1,4 +1,5 @@
-var config = require('../../config/config'),
+var User = require('../models/user.js'),
+    config = require('../../config/config'),
     jwt = require('jwt-simple'),
     moment = require('moment');
 
@@ -35,7 +36,7 @@ module.exports = function(app,express){
 					res.send(err);
 				}
 			}
-			//if all is well, we want to send a token for the user to use
+			//if all is well, we want to send a token for the user to use - populate?
 			return res.send({success:true, token: createToken(user), user:user});
 		});
 	});
@@ -50,6 +51,7 @@ module.exports = function(app,express){
 					return res.send({success:false, message:'That user does not exist!'});
 				}else if(user){
 					//check if the password is valid
+          console.log(req.body.password);
 					var validPass = user.comparePassword(req.body.password);
 					if(!validPass){
 						return res.send({success:false, message:'Incorrect password!'});
