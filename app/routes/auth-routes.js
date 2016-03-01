@@ -26,6 +26,7 @@ module.exports = function(app,express){
 			newUser.name = req.body.name;
 			newUser.email = req.body.email;
 			newUser.password = newUser.hashPassword(req.body.password);
+      newUser.location = 'Neverland'
 
 		newUser.save(function(err,user){
 			if(err){
