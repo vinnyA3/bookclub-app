@@ -5,6 +5,7 @@ var UserSchema = mongoose.Schema({
     name: String,
     email: {type: String, index:{unique:true}},
     password: {type: String, select:false},
+    location: String,
     books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}],
     swapRequests: [{type: mongoose.SchemaTypes.ObjectId, ref:'SwapRequests'}],
     outstandingRequests: [{type: mongoose.SchemaTypes.ObjectId, ref: 'OutstandingRequest'}]
