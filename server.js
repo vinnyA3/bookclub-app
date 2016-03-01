@@ -44,6 +44,9 @@ app.use(express.static(path.join(__dirname,'/public')));
 //include AUTH routes
 var authRoutes = require('./app/routes/auth-routes.js')(app,express);
 app.use('/auth',authRoutes);
+//include API Authenticated routes
+var apiRoutes = require('./app/routes/api-routes.js')(app,express);
+app.use('/api', apiRoutes);
 
 //get * route
 app.get('*', function(req,res){
