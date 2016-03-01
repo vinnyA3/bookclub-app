@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var OutstandingRequests = mongoose.Schema({
+var OutstandingRequest = mongoose.Schema({
   to: String,
   requestedBook: String,
   swapFor: String,
@@ -8,4 +8,4 @@ var OutstandingRequests = mongoose.Schema({
   belongsTo: [{type: mongoose.SchemaTypes.ObjectId, ref:'User'}]
 });
 
-module.exports = mongoose.model('OutstandingRequest',OutstandingRequests);
+module.exports = mongoose.model('OutstandingRequest',OutstandingRequest);
