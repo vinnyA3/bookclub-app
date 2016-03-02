@@ -1,6 +1,6 @@
 var User = require('../models/user'),
     Book = require('../models/book'),
-    BookRequests = require('../models/book-requests'),
+    BookRequest = require('../models/book-requests'),
     jwt = require('jwt-simple'),
     config = require('../../config/config'),
     moment = require('moment');
@@ -94,11 +94,20 @@ module.exports = function(app,express){
     })
     .post(ensureAuthenticated, function(req,res){
       //create the new book request
-
+      var newBookSwapRequest = new BookRequest();
+      newBookSwapRequest.requestFor = req.params.user_id;
+      newBookSwapRequest.from = req.user;
+      newBookSwapRequest.requestedBook = req.body.title;
+      newBookSwapRequest.swapFor = req.body.swapFor;
+      newBookSwapRequest.approved = false;
       //save the request
+      newBookSwapRequest.save(function(err){
+        if(err){
+          return res.send(err);
+        }
+        return res.send({message: 'Success. Book Request was logged'});
+      });
             //add the user_id and req.user's id to the book
-            
-
     });
 
   // === USER INBOX ========
