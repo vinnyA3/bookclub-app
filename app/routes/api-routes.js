@@ -1,9 +1,8 @@
-var User = require('../models/user.js'),
-    Book = require('../models/book.js'),
-    OutstandingRequest = require('../models/outstanding-requests.js'),
-    SwapRequests = require('../models/swap-requests.js'),
+var User = require('../models/user'),
+    Book = require('../models/book'),
+    BookRequests = require('../models/book-requests'),
     jwt = require('jwt-simple'),
-    config = require('../../config/config.js'),
+    config = require('../../config/config'),
     moment = require('moment');
 
 module.exports = function(app,express){
@@ -83,41 +82,40 @@ module.exports = function(app,express){
   router.route('/user/:user_id')
     //get the page info and selected book
     .get(ensureAuthenticated, function(req,res){
-      //get the the clicked user's accounts page
-      User.find({'_id': req.params.user_id}, function(err,user){
-        if(err){
-          return res.send(err);
-        }
-        if(!user){
-          return res.send({message: 'Failed to retrieve User Information.  Please try again later'});
-        }else{
-          return res.send(user);
-        }
-      });
+      //get the the clicked user's accounts page - populate books
+      User.find({'_id': req.params.user_id})
+          .populate('books')
+          .exec(function(err,user){
+            if(err){
+              return res.send(err);
+            }
+            return res.send(user);
+          });
     })
     .post(ensureAuthenticated, function(req,res){
       //create the new book request
-      var newOutstandingRequest = new OutstandingRequest();
-      newOutstandingRequest.to = req.params.user_id,
-      newOutstandingRequest.requestedBook = req.body.requested,
-      newOutstandingRequest.swapFor = req.body.swapfor,
-      newOutstandingRequest.status = 'Not Yet Approved',
-      newOutstandingRequest.belongsTo = req.user;
 
       //save the request
-      newOutstandingRequest.save(function(err,swapRequest){
-        if(err){
-          return res.send(err);
-        }
-        //update the Users's outstandingRequests array - push in swapRequest ObjectId
-        User.update({'_id': req.user}, {$push: {outstandingRequests: swapRequest.id}}, function(err,user){
+            //add the user_id and req.user's id to the book
+            
+
+    });
+
+  // === USER INBOX ========
+  router.route('/inbox')
+  //refactor to use book request
+    .get(ensureAuthenticated, function(req,res){
+      var populateQuery = [
+        {path: 'outstandingRequests'}
+      ];
+      User.find({'_id': req.user})
+        .populate(populateQuery)
+        .exec(function(err,user){
           if(err){
             return res.send(err);
           }
-          //return success
-          return res.send({success:true, message: 'Outstanding request Added!', user: user});
+          return res.send(user);
         });
-      }); //end outstanding request save
     });
 
   //==== USER ACCOUNT ======
@@ -132,13 +130,15 @@ module.exports = function(app,express){
         });
     })
     .put(ensureAuthenticated, function(req,res){
-      User.find({'_id':req.user}, function(err,user){
+      User.findById(req.user, function(err,user){
         if(err){
           return res.send(err);
         }
+
         //if we have options to change in the request, set the updated properties on the user
         if(req.body.name){user.name = req.body.name;}
         if(req.body.email){user.email = req.body.email;}
+        if(req.body.location){user.location = req.body.location}
         if(req.body.password){user.name = req.body.password;}
 
         //save the user
