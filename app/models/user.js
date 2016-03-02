@@ -6,9 +6,7 @@ var UserSchema = mongoose.Schema({
     email: {type: String, index:{unique:true}},
     password: {type: String, select:false},
     location: String,
-    books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}],
-    swapRequests: [{type: mongoose.SchemaTypes.ObjectId, ref:'SwapRequests'}],
-    outstandingRequests: [{type: mongoose.SchemaTypes.ObjectId, ref: 'OutstandingRequest'}]
+    books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}]
 });
 
 UserSchema.methods.hashPassword = function(password){
