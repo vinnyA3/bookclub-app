@@ -1,10 +1,18 @@
 angular.module('mainApp',[
   'ui.router',
+  'satellizer',
+  //controllerz
   'libraryCtrl',
   'yourBooksCtrl',
   'inboxCtrl',
+  //directivez
   'navbarButtonDirective',
   'libraryBookDirective',
   'modalDialogDirective',
+  //servicez
+  'bookService',
+  'inboxService',
+  'userService',
+  'accountService',
   'appRoutes'
 ]);
