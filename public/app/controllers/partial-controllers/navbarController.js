@@ -1,11 +1,11 @@
-angular.module('navbarController', ['satellizer'])
-  .controller('navbarCtrl', function($auth, $location){
+angular.module('navbarCtrl', ['satellizer'])
+  .controller('navbarController', function($auth, $location){
     var vm = this;
 
-    //isAuthenticated function
+    /*isAuthenticated function
     vm.isAuthenticated = function(){
       return $auth.isAuthenticated();
-    };
+    };*/
 
     //logout function
     vm.logOut = function(){
