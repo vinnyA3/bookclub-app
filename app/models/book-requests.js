@@ -6,7 +6,8 @@ var BookRequestSchema = mongoose.Schema({
   from: String,
   requestedBook: String,
   swapFor: String,
-  approved: Boolean
+  approved: Boolean,
+  belongsTo: [{type: mongoose.SchemaTypes.ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model('BookRequest', BookRequestSchema);
