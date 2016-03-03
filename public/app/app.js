@@ -1,12 +1,15 @@
 angular.module('mainApp',[
   'ui.router',
   'satellizer',
+  'ui.gravatar',
   //controllerz
   'libraryCtrl',
   'yourBooksCtrl',
   'inboxCtrl',
   'authCtrl',
   'navbarCtrl',
+  'accountCtrl',
+  'usersCtrl',
   //directivez
   'navbarButtonDirective',
   'libraryBookDirective',
