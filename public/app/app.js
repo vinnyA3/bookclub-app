@@ -5,6 +5,8 @@ angular.module('mainApp',[
   'libraryCtrl',
   'yourBooksCtrl',
   'inboxCtrl',
+  'authCtrl',
+  'navbarCtrl',
   //directivez
   'navbarButtonDirective',
   'libraryBookDirective',
@@ -12,7 +14,7 @@ angular.module('mainApp',[
   //servicez
   'bookService',
   'inboxService',
-  'userService',
+  'usersService',
   'accountService',
   'appRoutes'
 ]);
