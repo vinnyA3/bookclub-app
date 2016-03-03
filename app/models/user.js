@@ -6,7 +6,14 @@ var UserSchema = mongoose.Schema({
     email: {type: String, index:{unique:true}},
     password: {type: String, select:false},
     location: String,
-    books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}]
+    books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}],
+    bookRequests: [{type: mongoose.SchemaTypes.ObjectId, ref: 'BookRequest'}]
+});
+
+//User Middleware - remove all Book docs and book requests that reference the removed User
+UserSchema.pre('remove', function(next){
+  this.model('BookRequest').remove({belongsTo: this._id});
+  this.model('Book').remove({owner: this._id}, next);
 });
 
 UserSchema.methods.hashPassword = function(password){
