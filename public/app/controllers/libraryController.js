@@ -1,7 +1,7 @@
-angular.module('libraryCtrl', [])
-  .controller('libraryController', function(){
+angular.module('libraryCtrl', ['bookService'])
+  .controller('libraryController', function(Book){
     var vm = this;
-    vm.libraryBooks = [
+    /*vm.libraryBooks = [
       {id:'1',book_id:'001',src: 'http://www.adazing.com/wp-content/uploads/2012/09/animal-farm.jpg',name:'Animal Farm'},
       {id:'2',book_id:'002',src: 'http://flavorwire.files.wordpress.com/2012/08/gatsby.jpg',name:'The Great Gatsby'},
       {id:'3',book_id:'003',src: 'https://s-media-cache-ak0.pinimg.com/736x/36/cc/b4/36ccb4421b974e83d94912b08ba6ffbe.jpg',name:'The Scarlet Letter'},
@@ -14,5 +14,22 @@ angular.module('libraryCtrl', [])
       {id:'10',book_id:'0010',src: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRQ9rKopiX1-yJi8XnIiDN-6D1QruyWvJlDc9Vu6sa_lZM2BjEM',name:'The Book of Strange New Things'},
       {id:'11',book_id:'0011',src: 'http://40.media.tumblr.com/8c36f59e2ea0f2680ed263954cd949ae/tumblr_mnwnkcOq6V1qcrt6io1_500.jpg',name:'Paper Towns'},
       {id:'12',book_id:'0012',src: 'http://covers.openlibrary.org/b/isbn/9780425122389-M.jpg',name:'A Brief History Of Time'},
-    ];
+    ];*/
+    vm.libraryBooks = [];
+
+    //get all books
+    vm.getBooks = function(){
+      Book.getAllBooks()
+        .then(function(data){
+          console.log(data);
+          vm.libraryBooks = data;
+        })
+        .catch(function(data){
+          console.log('error .....');
+        });
+    };
+
+    //call get all books
+    vm.getBooks();
+
   });
