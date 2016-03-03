@@ -5,9 +5,8 @@
   <div class="your-books-add-container">
     <div class="your-books-add-container-form">
       <h1><i class="fa fa-plus"></i> Add a Book</h1>
-      <form class="your-books-add-container-form">
-        <input class="your-books-add-container-form-title" type="text" placeholder="Book Title">
-        <input class="your-books-add-container-form-isbn" type="text" placeholder="ISBN Number">
+      <form ng-submit="books.addBook()" class="your-books-add-container-form">
+        <input ng-model="books.book.title" class="your-books-add-container-form-title" type="text" placeholder="Book Title">
         <input class="your-books-add-container-form-submit" type="submit" value="Add">
       </form>
     </div>
@@ -16,7 +15,7 @@
   <h1>&nbsp;My books</h1>
   <div class="yourBooks">
     <div ng-repeat="book in books.yourBooks" class="yourBooks-book-container">
-      <library-book book="book"></library-book>
+      <library-book ng-click="books.deleteBook($index)" book="book"></library-book>
     </div>
   </div>
 </div>
