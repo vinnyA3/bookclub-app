@@ -7,6 +7,17 @@
   background-position: center;
   background-size: cover;
 }
+  .errorMessage{
+    width: 90%;
+    padding:8px;
+    text-align: center;
+    margin:0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: rgb(188, 9, 9);
+    color: white;
+    font-weight: bold;
+  }
   .auth-container{
     width: 45%;
     padding: 20px;
