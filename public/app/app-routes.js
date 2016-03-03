@@ -21,7 +21,7 @@ angular.module('appRoutes',['ui.router'])
       .state('account', {
           url:'/account',
           views:{
-            '':{templateUrl:'app/views/pages/account.html'},
+            '':{templateUrl:'app/views/pages/account.html', controller: 'accountController as account'},
             'nav@account': {templateUrl: 'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
           },
           resolve: {
@@ -51,11 +51,7 @@ angular.module('appRoutes',['ui.router'])
       .state('user',{
         url:'/user/:id?:book_id',
         views:{
-          '':{templateUrl:'app/views/pages/user.html',
-          controller:function($stateParams,$scope){
-            $scope.id = $stateParams;
-          }
-        },
+          '':{templateUrl:'app/views/pages/user.html', controller: 'usersController as user'},
           'nav@user':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
         },
         resolve: {
