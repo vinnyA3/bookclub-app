@@ -3,7 +3,9 @@ var User = require('../models/user'),
     BookRequest = require('../models/book-requests'),
     jwt = require('jwt-simple'),
     config = require('../../config/config'),
-    moment = require('moment');
+    moment = require('moment'),
+    google = require('googleapis'),
+    googlebooks = google.books('v1');
 
 module.exports = function(app,express){
   //create express router
@@ -30,6 +32,30 @@ module.exports = function(app,express){
     next();
   };
 
+  // ================ GOOGLE BOOKS API MIDDLWWARE ========
+  function getBookCovers(req,res,next){
+    var reqbookTitle = req.body.title,
+        //convert to lower case....strip spaces?
+        bookTitle = reqbookTitle.toLowerCase();
+    //call google books api
+    googlebooks.volumes.list({
+      q: bookTitle
+    }, function(err,data){
+      //if the volumeInfo object is undefined, set imagelink to placeholder image
+       if(data.items[0].volumeInfo.imageLinks === undefined){
+         req.imgLink = 'http://2.bp.blogspot.com/-ioujBTQNnXU/UXNkQrx_wLI/AAAAAAAAEqk/URmUI7ZBbu4/s1600/noimage.gif';
+         next();
+       }else{
+         //set the request 'imgLink' to first value's image link that is returned from the api call
+         console.log('middlware: data returned image link = ' + data.items[0].volumeInfo.imageLinks.thumbnail);
+         req.imgLink = data.items[0].volumeInfo.imageLinks.thumbnail;
+         console.log('middleware: request img link = ' + req.imgLink);
+         next();
+       }
+    });
+
+  };//end google books middleware
+
   //================ API ROUTES ==========================
 
   // ===== ALL BOOKS =====
@@ -47,11 +73,11 @@ module.exports = function(app,express){
   //==== USER BOOKS =====
   router.route('/user-books')
    //create book
-  .post(ensureAuthenticated, function(req,res){
+  .post(ensureAuthenticated, getBookCovers, function(req,res){
     //create new book, save it, update user's books field with pushed book's ObjectID
      var newBook = new Book();
      newBook.title = req.body.title;
-     newBook.imgLink = req.body.imgLink;
+     newBook.imgLink = req.imgLink;
      newBook.owner = req.user;
 
      newBook.save(function(err,book){
