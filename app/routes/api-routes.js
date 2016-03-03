@@ -3,7 +3,9 @@ var api = require('../controllers/api-controller'),   //require api Controller
     config = require('../../config/config'),
     moment = require('moment'),
     google = require('googleapis'),
-    googlebooks = google.books('v1');
+    googlebooks = google.books('v1'),
+    //book model --- try and refactor middleware into the user Schema
+    Book  = require('../models/book');
 
 module.exports = function(app,express){
   //create express router
@@ -34,12 +36,14 @@ module.exports = function(app,express){
   function getBookCovers(req,res,next){
     var reqbookTitle = req.body.title,
         //convert to lower case....strip spaces?
-        bookTitle = reqbookTitle.toLowerCase();
+        bookTitle = reqbookTitle;
+        console.log(bookTitle);
     //call google books api
     googlebooks.volumes.list({
       q: bookTitle
     }, function(err,data){
       //if the volumeInfo object is undefined, set imagelink to placeholder image
+      console.log(data);
        if(data.items[0].volumeInfo.imageLinks === undefined){
          req.imgLink = 'http://2.bp.blogspot.com/-ioujBTQNnXU/UXNkQrx_wLI/AAAAAAAAEqk/URmUI7ZBbu4/s1600/noimage.gif';
          next();
@@ -52,6 +56,19 @@ module.exports = function(app,express){
        }
     });
 
+  };
+
+  //===== MIDDLEWARE-  Remove deleted reference to book in books db ===========
+  function removeBookReference(req,res,next){
+     console.log(req.params.book_id);
+     Book.remove({'_id': req.params.book_id}, function(err){
+       if(err){
+         console.log(err);
+         next();
+       }else{
+          next();
+       }
+     })
   };
 
   //================ API ROUTES ===============================================
@@ -70,7 +87,7 @@ module.exports = function(app,express){
   //======= SPECIFIC USER BOOK =====
   router.route('/user-books/:book_id')
     //delete a book
-    .delete(ensureAuthenticated, api.deleteBook);
+    .delete(ensureAuthenticated, removeBookReference, api.deleteBook);
 
 
  //=== OTHER USERS' PROFILE PAGE ====
