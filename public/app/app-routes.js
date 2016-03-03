@@ -1,21 +1,28 @@
 angular.module('appRoutes',['ui.router'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider){
     $stateProvider
+      .state('auth', {
+        url: '/',
+        views:{
+          //main - intro page
+          '':{templateUrl:'app/views/pages/auth.html', controller: 'authController as authenticate'},
+          resolve: {
+            skipIfLoggedIn: skipIfLoggedIn
+          }
+        }
+      })
       .state('home', {
-          url:'/',
+          url:'/home',
           views:{
             '':{templateUrl:'app/views/pages/home.html', controller: 'libraryController as library'},
-            'nav@home': {templateUrl: 'app/views/partials/navbar.html'},
-          },
-          resolve: {
-				    	loginRequired: loginRequired
-			  	}
+            'nav@home': {templateUrl: 'app/views/partials/navbar.html', controller: 'navbarController as navbar'},
+          }
       })
       .state('account', {
           url:'/account',
           views:{
             '':{templateUrl:'app/views/pages/account.html'},
-            'nav@account': {templateUrl: 'app/views/partials/navbar.html'}
+            'nav@account': {templateUrl: 'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
           },
           resolve: {
 					    loginRequired: loginRequired
@@ -25,7 +32,7 @@ angular.module('appRoutes',['ui.router'])
          url:'/inbox',
          views:{
            '':{templateUrl:'app/views/pages/inbox.html', controller: 'inboxController as inbox'},
-           'nav@inbox':{templateUrl:'app/views/partials/navbar.html'}
+           'nav@inbox':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
          },
          resolve: {
 				   	loginRequired: loginRequired
@@ -35,7 +42,7 @@ angular.module('appRoutes',['ui.router'])
          url:'/your-books',
          views:{
            '':{templateUrl:'app/views/pages/my-books.html', controller: 'yourBooksController as books'},
-           'nav@your-books':{templateUrl:'app/views/partials/navbar.html'}
+           'nav@your-books':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
          },
          resolve: {
 				  	loginRequired: loginRequired
@@ -49,7 +56,7 @@ angular.module('appRoutes',['ui.router'])
             $scope.id = $stateParams;
           }
         },
-          'nav@user':{templateUrl:'app/views/partials/navbar.html'}
+          'nav@user':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
         },
         resolve: {
 					loginRequired: loginRequired
@@ -57,12 +64,22 @@ angular.module('appRoutes',['ui.router'])
       });
 
       //otherwise, redirect to home
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/home');
 
       //set base href # to /
       $locationProvider.html5Mode(true);
 
 
+      //========================  SKIPPED IF LOGGED IN FUNCTION ==============================
+  function skipIfLoggedIn($q, $auth) {
+     var deferred = $q.defer();
+     if ($auth.isAuthenticated()) {
+       deferred.reject();
+     } else {
+       deferred.resolve();
+     }
+     return deferred.promise;
+   }
       //========================  LOGIN REQUIRED RESOLVE FUNCTION  ===========================
 		function loginRequired($q,$location,$auth){
 			var deffered = $q.defer();
