@@ -41,11 +41,11 @@ angular.module('bookService', [])
         return deffered.promise;
     };
 
-    function addUserBook(title,imgLink){
+    function addUserBook(title){
       //create deffer object
       var deffered = $q.defer();
       //make http request
-      $http.post('/api/user-books',{title: title, imgLink: imgLink})
+      $http.post('/api/user-books',{title: title})
         .success(function(data){
           if(data){
             deffered.resolve(data);
