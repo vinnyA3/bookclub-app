@@ -142,11 +142,9 @@ module.exports = function(app,express){
   router.route('/inbox')
   //refactor to use book request
     .get(ensureAuthenticated, function(req,res){
-      var populateQuery = [
-        {path: 'outstandingRequests'}
-      ];
+
       User.find({'_id': req.user})
-        .populate(populateQuery)
+        .populate('bookRequests')
         .exec(function(err,user){
           if(err){
             return res.send(err);
