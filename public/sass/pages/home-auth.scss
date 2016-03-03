@@ -1,0 +1,33 @@
+.main-container{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('http://img.talkandroid.com/uploads/2013/11/stack_of_books.jpg');
+  background-position: center;
+  background-size: cover;
+}
+  .auth-container{
+    width: 45%;
+    padding: 20px;
+    margin:0 auto;
+    margin-top: 210px;
+    text-align: center;
+    background: rgb(234, 234, 234);
+  }
+    .auth-container-login{
+      width: 100%;
+    }
+      .auth-container-login input{
+         width: 90%;
+         height: 43px;
+         margin-bottom: 20px;
+         padding-left: 8px;
+         font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+      }
+      .auth-container-login-submit{
+         background: rgb(36, 34, 73);
+         padding: 17px;
+         border:none;
+         color: white;
+      }
