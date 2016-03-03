@@ -7,7 +7,7 @@ angular.module('authCtrl', ['satellizer'])
 			$auth.login({email: vm.user.email, password: vm.user.password})
 				.then(function(res){
 					if(!res.data.token){
-						vm.error = true;
+					   	vm.error = true;
               vm.errorMessage = res.data.message;
 					}else{
 						$location.path('/home');
