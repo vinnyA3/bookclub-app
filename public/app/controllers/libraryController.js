@@ -13,6 +13,6 @@ angular.module('libraryCtrl', [])
       {id:'9',book_id:'009',src: 'http://cdn.pastemagazine.com/www/system/images/photo_albums/minimalist-book-covers/large/photo_28531_0.jpg?1384968217',name:'Romeo and Juliet'},
       {id:'10',book_id:'0010',src: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRQ9rKopiX1-yJi8XnIiDN-6D1QruyWvJlDc9Vu6sa_lZM2BjEM',name:'The Book of Strange New Things'},
       {id:'11',book_id:'0011',src: 'http://40.media.tumblr.com/8c36f59e2ea0f2680ed263954cd949ae/tumblr_mnwnkcOq6V1qcrt6io1_500.jpg',name:'Paper Towns'},
-      {id:'12',book_id:'0012',src: 'http://covers.openlibrary.org/b/isbn/9780553380163-M.jpg',name:'A Brief History Of Time'},
+      {id:'12',book_id:'0012',src: 'http://covers.openlibrary.org/b/isbn/9780425122389-M.jpg',name:'A Brief History Of Time'},
     ];
   });
