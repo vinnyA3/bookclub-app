@@ -78,10 +78,26 @@ module.exports = function(app,express){
         });
   });
 
+  //======= SPECIFIC USER BOOK ==========
+  router.route('/user-books/:book_id')
+    //delete a book
+    .delete(ensureAuthenticated, function(req,res){
+      //find user and delete the book reference based on passed ID
+      User.findOneAndUpdate({"_id": req.user}, {$pull: {'books': req.params.book_id}}, function(err,user){
+        if(err){
+          return res.send(err);
+        }
+        return res.send({message: 'Book successfully deleted!'});
+      });
+    });
+
+
  //====== OTHER USERS' PROFILE PAGE ====
   router.route('/user/:user_id')
     //get the page info and selected book
     .get(ensureAuthenticated, function(req,res){
+      console.log(req.user);
+      console.log(req.params.user_id);
       //get the the clicked user's accounts page - populate books
       User.find({'_id': req.params.user_id})
           .populate('books')
@@ -93,21 +109,33 @@ module.exports = function(app,express){
           });
     })
     .post(ensureAuthenticated, function(req,res){
-      //create the new book request
-      var newBookSwapRequest = new BookRequest();
+      var users_ids = [req.user, req.params.user_id],
+          //create the new book request
+          newBookSwapRequest = new BookRequest();
+
       newBookSwapRequest.requestFor = req.params.user_id;
       newBookSwapRequest.from = req.user;
       newBookSwapRequest.requestedBook = req.body.title;
       newBookSwapRequest.swapFor = req.body.swapFor;
       newBookSwapRequest.approved = false;
       //save the request
-      newBookSwapRequest.save(function(err){
+      newBookSwapRequest.save(function(err,bookRequest){
         if(err){
           return res.send(err);
         }
-        return res.send({message: 'Success. Book Request was logged'});
+        //save the request and push the requests's id to the req.user's bookReq arr and the user -> user_id's bookReq arr
+        User.update(
+          { _id: { $in: users_ids}},
+          { $push: {bookRequests: bookRequest.id}},
+          { upsert:true, multi:true},
+        function(err){
+          if(err){
+            return res.send(err);
+          }
+          return res.send({message:'Book Request added successfully!'});
+        });
+
       });
-            //add the user_id and req.user's id to the book
     });
 
   // === USER INBOX ========
