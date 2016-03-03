@@ -10,11 +10,12 @@ var UserSchema = mongoose.Schema({
     bookRequests: [{type: mongoose.SchemaTypes.ObjectId, ref: 'BookRequest'}]
 });
 
-//User Middleware - remove all Book docs and book requests that reference the removed User
-UserSchema.pre('remove', function(next){
-  this.model('BookRequest').remove({belongsTo: this._id});
+/*User Middleware - remove all Book docs and book requests that reference the removed User
+UserSchema.pre('findOneAndUpdate', function(req,res,next){
+  //this.model('BookRequest').remove({belongsTo: this._id});
+  console.log(req.user);
   this.model('Book').remove({owner: this._id}, next);
-});
+});*/
 
 UserSchema.methods.hashPassword = function(password){
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8,null));
