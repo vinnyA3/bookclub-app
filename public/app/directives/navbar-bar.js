@@ -8,7 +8,7 @@ angular.module('navbarButtonDirective',[])
         var mainView = element.parent().parent().parent(),
             mainDiv = element.parent().parent(),
             nav = mainView[0].querySelector('.drawer-nav');
-  
+
         element.on('click',function(e){
           nav.classList.toggle('js-drawer-nav-open');
           e.stopPropagation();
@@ -16,9 +16,6 @@ angular.module('navbarButtonDirective',[])
         mainDiv.on('click', function(){
           nav.classList.remove('js-drawer-nav-open');
         })
-      },
-      controller:function($scope){
-        console.log('operational');
       }
     }
   });
