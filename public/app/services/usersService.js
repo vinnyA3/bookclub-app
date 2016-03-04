@@ -6,10 +6,10 @@ angular.module('usersService',[])
         createRequests: createRequests
       };
 
-      function getUserInfo(){
+      function getUserInfo(id){
           var deffered = $q.defer();
 
-          $http.get('/user/'+id)
+          $http.get('/api/user/'+id)
             .success(function(data){
               deffered.resolve(data);
             })
