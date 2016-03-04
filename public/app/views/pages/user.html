@@ -1,6 +1,10 @@
 <div class="nav-view" ui-view="nav"></div>
   <div class="main user-page">
     <navbar-toggle></navbar-toggle>
-    <h1>User ({{id.id}}) page with book id: {{id.book_id}}</h1>
+    <h1>{{user.userData.name}}'s page with {{user.userData.books.length}} books!</h1>
+    <img gravatar-src="user.userData.email" gravatar-size="250">
+    <p>{{user.userData.location}}</p>
+    <p>{{user.userData.email}}</p>
+    <p>Requested Book: {{user.requestedBook.title}}<p>
   </div>
 </div>

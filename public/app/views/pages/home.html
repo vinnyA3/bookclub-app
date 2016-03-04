@@ -3,6 +3,7 @@
 <div class="main library">
   <navbar-toggle></navbar-toggle>
   <h1>&nbsp;Library</h1>
+
   <div class="library">
     <div ng-repeat="book in library.libraryBooks" class="library-book-container">
       <a ui-sref="user({id:book.owner[0], book_id:book._id})"><library-book book="book"></library-book></a>
