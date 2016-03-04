@@ -9,7 +9,7 @@ angular.module('accountService', [])
     function getAccountInfo(){
       var deffered = $q.defer();
 
-      $http.get('/account')
+      $http.get('/api/account')
         .success(function(data){
           deffered.resolve(data);
         })
@@ -23,7 +23,7 @@ angular.module('accountService', [])
     function updateInfo(name, email, location, password){
       var deffered = $q.defer();
 
-      $http.put('/account', {name: name, email: email, location: location, password: password})
+      $http.put('/api/account', {name: name, email: email, location: location, password: password})
         .success(function(data){
           //update the page info after update
           deffered.resolve(data);
@@ -38,7 +38,7 @@ angular.module('accountService', [])
     function deleteAccount(){
       var deffered = $q.defer();
 
-      $http.delete('/account')
+      $http.delete('/api/account')
         .success(function(data){
           //update the page info after update
           deffered.resolve(data);
