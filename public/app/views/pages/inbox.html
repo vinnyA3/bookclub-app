@@ -10,14 +10,12 @@
           <div class="swap-content">
             <p>From: <strong>{{request.from}}</strong><br><br>
                Book: <strong>{{request.requestedBook}}</strong><br>
-              <button ng-click="inbox.toggleModal(request.from, request.requestedBook)" class="swap-content-approve">Approve?</button>
+              <button class="swap-content-approve">Approve?</button>
               <span class="swap-content-close fa fa-close"></span>
             </p>
           </div>
       </div>
-      <modal-dialog user="inbox.approvedInfo.name" book="inbox.approvedInfo.book" show='inbox.modalShown' width='90%' height='auto'>
-          <p>{{inbox.approvedInfo.name}}, {{inbox.approvedInfo.book}}</p>
-      </modal-dialog>
+
   </div>
   <h2>Your outstanding swap requests</h2>
   <div class="swap-container">
