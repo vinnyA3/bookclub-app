@@ -9,16 +9,13 @@
   }
   .account-image-container{
     padding:8px;
+    text-align: center;
     @include break(lg) {
+      text-align: justify;
       width: 50%;
     }
   }
   .account-image{
-    height: 100%;
-    width: 100%;
-    background:url('../../assets/images/sm-vinny-profile.jpg');
-    background-position: 30% 15%;
-    background-size: cover;
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(#000, .25);
   }
@@ -41,7 +38,10 @@
     /*  UPDATE INFO */
     .account-update-info-container{
       padding:8px;
+      text-align: center;
+      width: 100%;
       @include break(lg) {
+        text-align: left;
         width: 50%
       }
     }
@@ -67,5 +67,32 @@
           cursor: pointer;
           background: #242249;
           color: white;
+        }
+      }
+
+    /* Delete Account !! */
+    .account-delete-container{
+      width: 100%;
+      padding: 8px;
+      text-align: center;
+      margin-top: 70px;
+      @include break(md) {
+        text-align: right;
+        margin: 0;
+        width: 50%;
+      }
+    }
+      .account-delete-container-button{
+        padding: 8px;
+        border:none;
+        background: rgb(229, 22, 22);
+        color: white;
+        font-weight: bold;
+        border-radius:2px;
+        transition: all 0.4s ease;
+        &:hover{
+          cursor: pointer;
+          background: rgb(191, 13, 13);
+          box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
         }
       }
