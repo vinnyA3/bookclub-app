@@ -1,10 +1,30 @@
 <div class="nav-view" ui-view="nav"></div>
   <div class="main user-page">
     <navbar-toggle></navbar-toggle>
-    <h1>{{user.userData.name}}'s page with {{user.userData.books.length}} books!</h1>
-    <img gravatar-src="user.userData.email" gravatar-size="250">
-    <p>{{user.userData.location}}</p>
-    <p>{{user.userData.email}}</p>
-    <p>Requested Book: {{user.requestedBook.title}}<p>
+
+    <div class="user-container">
+      <div class="user-info-container">
+        <img gravatar-src="user.userData.email" gravatar-size="250">
+        <p>{{user.userData.name}}</p>
+        <p><i class="fa fa-map-marker account-user-info-marker"></i>&nbsp; {{user.userData.location}}</p>
+        <p><i class="fa fa-envelope account-user-info-mail"></i>&nbsp; {{user.userData.email}}</p>
+      </div>
+
+      <div id="requested" class="requested-book-container">
+        <img style="height:200px; width: 180px" ng-src="{{user.requestedBook.imgLink}}">
+        <p> Book: {{user.requestedBook.title}}<p>
+        <button>Request Swap</button>
+      </div>
+    </div>
+
+    <br><br>
+    <h1>{{user.userData.name}}'s books</h1>
+    <div class="userBooks">
+      <div class="userBooks-book-container" ng-repeat="book in user.userData.books">
+          <library-book ng-click="user.setRequestedBook($index)" book="book"></library-book>
+      </div>
+    </div>
+
+
   </div>
 </div>
