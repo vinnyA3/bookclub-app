@@ -3,9 +3,7 @@ angular.module('modalDialogDirective',[])
       return {
         restrict: 'E',
         scope: {
-          show: '=',
-          user: '=',
-          book: '='
+          show: '='
         },
         replace: true, // Replace with the template below
         templateUrl: 'app/views/partials/modalView.html',
@@ -17,6 +15,7 @@ angular.module('modalDialogDirective',[])
             scope.dialogStyle.width = attrs.width;
           if (attrs.height)
             scope.dialogStyle.height = attrs.height;
+
           scope.hideModal = function() {
             scope.show = false;
           };
