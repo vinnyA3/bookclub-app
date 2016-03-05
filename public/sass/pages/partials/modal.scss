@@ -13,7 +13,8 @@
   /* A centered div above the overlay with a box shadow. */
   z-index:10000;
   position: fixed;
-  width:40%;
+  padding:8px;
+  max-width: 50%;
   /* Center the dialog */
   top: 50%;
   left: 50%;
@@ -26,7 +27,7 @@
 }
 .ng-modal-dialog-content {
   padding:10px;
-  text-align: left;
+  text-align: center;
 }
 .ng-modal-close {
   position: absolute;
