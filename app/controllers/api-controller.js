@@ -1,5 +1,4 @@
 /* API Controller */
-
 var User = require('../models/user'),
     Book = require('../models/book'),
     BookRequest = require('../models/book-requests');
