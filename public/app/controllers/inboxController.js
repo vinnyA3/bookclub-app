@@ -4,13 +4,12 @@ angular.module('inboxCtrl', ['inboxService'])
     var vm = this;
     vm.noRequests = false;
     vm.noRequestMessage = 'There are no book swap requests.';
-    vm.modalShown = false;
-    vm.approvedInfo = {};
     vm.swapRequests = [];
 
     vm.getRequests = function(){
         Inbox.getRequests()
           .then(function(data){
+             console.log(data);
               vm.swapRequests = data[0].bookRequests;
               if(!vm.swapRequests.length){
                 vm.noRequests = true;
@@ -19,12 +18,6 @@ angular.module('inboxCtrl', ['inboxService'])
           .catch(function(data){
             console.log('error....');
           });
-    };
-
-    vm.toggleModal = function(name,book){
-        vm.modalShown = !vm.modalShown;
-        vm.approvedInfo.name = name;
-        vm.approvedInfo.book = book;
     };
 
     vm.getRequests();
