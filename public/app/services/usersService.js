@@ -3,7 +3,8 @@ angular.module('usersService',[])
   .factory('User', function($q,$http){
       var userService = {
         getUserInfo: getUserInfo,
-        createRequests: createRequests
+        //create book request
+        createRequest: createRequest
       };
 
       function getUserInfo(id){
@@ -20,10 +21,10 @@ angular.module('usersService',[])
           return deffered.promise;
       };
 
-      function createRequests(title, swapFor){
+      function createRequest(id, title, swapFor){
           var deffered = $q.defer();
 
-          $http.post('/user/'+id, {title:title, swapFor: swapFor})
+          $http.post('/api/user/'+id, {title:title, swapFor: swapFor})
             .success(function(data){
               deffered.resolve(data);
             })
