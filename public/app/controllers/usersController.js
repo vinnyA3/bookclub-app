@@ -6,6 +6,9 @@ angular.module('usersCtrl', ['usersService'])
 
     vm.userData = {};
     vm.requestedBook = {};
+    vm.requestInfo = {};
+    vm.swapTitle = null;
+    vm.modalShown = false;
 
     //search for requested book - id must be a book id
     function searchRequestedBook(books, id){
@@ -34,8 +37,29 @@ angular.module('usersCtrl', ['usersService'])
        vm.requestedBook = searchRequestedBook(vm.userData.books, book_id);
 
        $location.hash('requested');
-
        $anchorScroll();
+
+    };
+
+    vm.sendBookRequest = function(){
+      if(vm.swapTitle == '' || vm.swapTitle == null){
+        return;
+      }
+      User.createRequest($stateParams.id, vm.requestedBook.title, vm.swapTitle)
+        .then(function(data){
+          vm.modalShown = false;
+          vm.swapTitle = '';
+          console.log('Success!!');
+        })
+        .catch(function(data){
+          vm.modalShown = false;
+          vm.swapTitle = '';
+          console.log('error...');
+        });
+    };
+
+    vm.toggleModal = function(){
+        vm.modalShown = !vm.modalShown;
     };
 
     //cal get user info
