@@ -7,7 +7,7 @@ var UserSchema = mongoose.Schema({
     password: {type: String, select:false},
     location: String,
     books: [{type: mongoose.SchemaTypes.ObjectId, ref:'Book'}],
-    bookRequests: [{type: mongoose.SchemaTypes.ObjectId, ref: 'BookRequest'}]
+    bookRequests: [BookRequest]
 });
 
 /*User Middleware - remove all Book docs and book requests that reference the removed User
