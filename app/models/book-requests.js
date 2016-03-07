@@ -2,12 +2,12 @@
 var mongoose = require('mongoose');
 
 var BookRequestSchema = mongoose.Schema({
-  requestFor: String,
   from: String,
+  to: String,
   requestedBook: String,
   swapFor: String,
   approved: Boolean,
-  belongsTo: [{type: mongoose.SchemaTypes.ObjectId, ref: 'User'}]
+  isUsersRequest: Boolean //does this request belong to the logged in User?
 });
 
 module.exports = mongoose.model('BookRequest', BookRequestSchema);
