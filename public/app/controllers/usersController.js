@@ -1,11 +1,11 @@
-angular.module('usersCtrl', ['usersService'])
-  .controller('usersController', function(User, $stateParams, $location, $anchorScroll){
+angular.module('usersCtrl', ['usersService','accountService'])
+  .controller('usersController', function(User, Account, $stateParams, $location, $anchorScroll){
 
     var vm = this;
     var bookId = $stateParams.book_id;
 
     vm.userData = {};
-    vm.requestedBook = {};
+    vm.requestedBook = {}; //current requested book
     vm.requestInfo = {};
     vm.swapTitle = null;
     vm.modalShown = false;
@@ -45,7 +45,7 @@ angular.module('usersCtrl', ['usersService'])
       if(vm.swapTitle == '' || vm.swapTitle == null){
         return;
       }
-      User.createRequest($stateParams.id, vm.requestedBook.title, vm.swapTitle)
+      User.createRequest($stateParams.id, vm.userData.name, vm.requestedBook.title, vm.swapTitle)
         .then(function(data){
           vm.modalShown = false;
           vm.swapTitle = '';
