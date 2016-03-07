@@ -72,11 +72,12 @@ exports.requestBookSwap = function(req,res){
       //create the new book request
       newBookSwapRequest = new BookRequest();
 
-  newBookSwapRequest.requestFor = req.params.user_id;
-  newBookSwapRequest.from = req.user;
+  newBookSwapRequest.from = req.params.user_id;
+  newBookSwapRequest.to = req.user;
   newBookSwapRequest.requestedBook = req.body.title;
   newBookSwapRequest.swapFor = req.body.swapFor;
   newBookSwapRequest.approved = false;
+  //if the
   //save the request
   newBookSwapRequest.save(function(err,bookRequest){
     if(err){
