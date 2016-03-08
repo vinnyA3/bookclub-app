@@ -5,7 +5,6 @@ angular.module('usersCtrl', ['usersService','accountService'])
     var bookId = $stateParams.book_id; //book id from url param
     var currentUserName = null; //this is the currently LOGGED IN user's info - probably could've names my variables better
 
-
     vm.userData = {}; //users data ( user whos page youre on)
     vm.requestedBook = {}; //current requested book
     vm.swapTitle = null; // book title to be swapped for
