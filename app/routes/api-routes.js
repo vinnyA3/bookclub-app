@@ -1,5 +1,6 @@
 var auth = require('../middlewares/auth-middleware'),//require auth middlware,
-    book = require('../middlewares/book-middleware'); //require book middleware
+    book = require('../middlewares/book-middleware'), //require book middleware
+    api = require('../controllers/api-controller');//require api controller
 
 module.exports = function(app,express){
 
@@ -22,7 +23,7 @@ module.exports = function(app,express){
   //======= SPECIFIC USER BOOK =====
   router.route('/user-books/:book_id')
     //delete a book
-    .delete(auth.ensureAuthenticated, book.removeBookReference, api.deleteBook);
+    .delete(auth.ensureAuthenticated, api.deleteBook);
 
 
  //=== OTHER USERS' PROFILE PAGE ====
@@ -30,7 +31,7 @@ module.exports = function(app,express){
     //get the page info and selected book
     .get(auth.ensureAuthenticated, api.getOtherUsersBooks)
     //request a book swap
-    .post(auth.ensureAuthenticated, api.requestBookSwap);
+    .post(auth.ensureAuthenticated, book.pushBookRequest, api.requestBookSwap);
 
 
   // === USER INBOX ========
