@@ -62,6 +62,7 @@ exports.getOtherUsersBooks = function(req,res){
       .populate('books')
       .exec(function(err,user){
         if(err){
+          console.log(err);
           return res.send(err);
         }
         return res.send(user);
