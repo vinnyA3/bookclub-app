@@ -49,6 +49,7 @@ exports.deleteBook = function(req,res){
     //find user and delete the book reference based on passed ID
     User.findOneAndUpdate({"_id": req.user}, {$pull: {'books': req.params.book_id}}, function(err,user){
       if(err){
+        console.log(err);
         return res.send(err);
       }
       return res.send({message: 'Book successfully deleted!'});
@@ -68,34 +69,32 @@ exports.getOtherUsersBooks = function(req,res){
 };
 
 exports.requestBookSwap = function(req,res){
-  var users_ids = [req.user, req.params.user_id],
-      //create the new book request
-      newBookSwapRequest = new BookRequest();
 
-  newBookSwapRequest.from = req.params.user_id;
-  newBookSwapRequest.to = req.user;
-  newBookSwapRequest.requestedBook = req.body.title;
-  newBookSwapRequest.swapFor = req.body.swapFor;
-  newBookSwapRequest.approved = false;
-  //if the
-  //save the request
-  newBookSwapRequest.save(function(err,bookRequest){
-    if(err){
-      return res.send(err);
-    }
-    //save the request and push the requests's id to the req.user's bookReq arr and the user -> user_id's bookReq arr
-    User.update(
-      { _id: { $in: users_ids}},
-      { $push: {bookRequests: bookRequest.id}},
-      { upsert:true, multi:true},
-    function(err){
+  var newBookSwapRequest = req.bookRequest;
+  /*is this request for the currently logged in User? (not an outstanding request from the logged in user)
+  newBookSwapRequest.isUsersRequest = false; //false here, its for the other user */
+  newBookSwapRequest.isUsersRequest = false;
+  console.log(newBookSwapRequest);
+
+  //push the new the request into User Document
+    User.findOne({ '_id': req.user}, function(err,user){
       if(err){
-        return res.send(err);
+        console.log(err);
+         return res.send(err);
       }
-      return res.send({message:'Book Request added successfully!'});
-    });
+      user.bookRequests.push(newBookSwapRequest);
+      //save the user
+      user.save(function(err){
+        if(err){
+          console.log(err);
+          return res.send(err);
+        }
+        console.log('successfully added book request');
+        return res.send({message:'Book Request added successfully!'});
+      });//end save
 
-  });
+    });//end update
+
 };
 
 exports.getUserInbox = function(req,res){
@@ -130,6 +129,7 @@ exports.updateAccountInfo = function(req,res){
     if(req.body.email){user.email = req.body.email;}
     if(req.body.location){user.location = req.body.location}
     if(req.body.password){user.name = req.body.password;}
+
 
     //save the user
     user.save(function(err){
