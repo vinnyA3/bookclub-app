@@ -6,14 +6,15 @@
   <div class="swap-container">
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
-      <div class="swap" ng-repeat="request in inbox.swapRequests">
-          <div class="swap-content">
-            <p>From: <strong>{{request.from}}</strong><br><br>
-               Book: <strong>{{request.requestedBook}}</strong><br>
-              <button class="swap-content-approve">Approve?</button>
+      <div class="swap" ng-repeat="request in inbox.bookRequests | filter: {isUsersRequest: true}">
+          <ul class="swap-content">
+            <li>From: <strong>{{request.from}}</strong></li>
+               <li><strong>{{request.requestedBook}}</strong></li>
+               <li><i style="padding-left: 35px" class="fa fa-refresh"></i></li>
+               <li><strong>{{request.swapFor}}</strong></li>
+               <button class="swap-content-approve">Approve?</button>
               <span class="swap-content-close fa fa-close"></span>
-            </p>
-          </div>
+          </ul>
       </div>
 
   </div>
@@ -21,9 +22,9 @@
   <div class="swap-container">
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
-      <div class="swap" ng-repeat="request in inbox.swapRequests">
+      <div class="swap" ng-repeat="request in inbox.bookRequests | filter:{isUsersRequest: false}">
           <div class="swap-content">
-            <p>User: <strong>{{request.from}}</strong><br><br>
+            <p>User: <strong>{{request.to}}</strong><br><br>
                Book: <strong>{{request.requestedBook}}</strong><br><br>
                Status: Pending ...
               <span class="swap-content-close fa fa-close"></span>
