@@ -2,8 +2,8 @@
 var mongoose = require('mongoose');
 
 var BookRequestSchema = mongoose.Schema({
-  from: String,
   to: String,
+  from: String,
   requestedBook: String,
   swapFor: String,
   approved: Boolean,
