@@ -21,10 +21,10 @@ angular.module('usersService',[])
           return deffered.promise;
       };
 
-      function createRequest(id, title, swapFor){
+      function createRequest(id, sendTo, fromUser, title, swapFor){
           var deffered = $q.defer();
 
-          $http.post('/api/user/'+id, {title:title, swapFor: swapFor})
+          $http.post('/api/user/'+id, {sendToUserId: id, sendTo: sendTo, fromUser: fromUser, title:title, swapFor: swapFor})
             .success(function(data){
               deffered.resolve(data);
             })
