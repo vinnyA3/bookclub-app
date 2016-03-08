@@ -2,13 +2,14 @@ angular.module('usersCtrl', ['usersService','accountService'])
   .controller('usersController', function(User, Account, $stateParams, $location, $anchorScroll){
 
     var vm = this;
-    var bookId = $stateParams.book_id;
+    var bookId = $stateParams.book_id; //book id from url param
+    var currentUserName = null; //this is the currently LOGGED IN user's info - probably could've names my variables better
 
-    vm.userData = {};
+
+    vm.userData = {}; //users data ( user whos page youre on)
     vm.requestedBook = {}; //current requested book
-    vm.requestInfo = {};
-    vm.swapTitle = null;
-    vm.modalShown = false;
+    vm.swapTitle = null; // book title to be swapped for
+    vm.modalShown = false; // modal determinant
 
     //search for requested book - id must be a book id
     function searchRequestedBook(books, id){
@@ -18,6 +19,18 @@ angular.module('usersCtrl', ['usersService','accountService'])
             return books[i];
           }
       };
+    };
+
+    //get the currently logged in user's information - specifically, the user's name (used to send in the book req)
+    vm.currentUserInfo = function(){
+      Account.getAccountInfo()
+        .then(function(data){
+          //set the current user's name - will be passed into the sendBookRequest function
+           currentUserName = data[0].name;
+        })
+        .catch(function(data){
+             console.log('error....');
+        });
     };
 
     vm.getUserInfo = function(){
@@ -45,7 +58,8 @@ angular.module('usersCtrl', ['usersService','accountService'])
       if(vm.swapTitle == '' || vm.swapTitle == null){
         return;
       }
-      User.createRequest($stateParams.id, vm.userData.name, vm.requestedBook.title, vm.swapTitle)
+      //create the request - send who its from, who its for, the requested book title and the swap title
+      User.createRequest($stateParams.id, vm.userData.name, currentUserName, vm.requestedBook.title, vm.swapTitle)
         .then(function(data){
           vm.modalShown = false;
           vm.swapTitle = '';
@@ -62,7 +76,9 @@ angular.module('usersCtrl', ['usersService','accountService'])
         vm.modalShown = !vm.modalShown;
     };
 
-    //cal get user info
+    //ca/l get user info
     vm.getUserInfo();
+    //get the current user's info -  name
+    vm.currentUserInfo();
 
   });
