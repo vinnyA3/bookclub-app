@@ -1,19 +1,23 @@
 angular.module('inboxCtrl', ['inboxService'])
   .controller('inboxController', function(Inbox){
 
-    var vm = this;
+    var vm = this,
+        currentUser = null;
+
     vm.noRequests = false;
     vm.noRequestMessage = 'There are no book swap requests.';
-    vm.swapRequests = [];
+    vm.bookRequests = [];
 
     vm.getRequests = function(){
         Inbox.getRequests()
           .then(function(data){
-             console.log(data);
-              vm.swapRequests = data[0].bookRequests;
-              if(!vm.swapRequests.length){
-                vm.noRequests = true;
-              }
+            //set bookRequests variable
+             vm.bookRequests = data[0].bookRequests;
+             //if the book requests array is empty....
+             if(!vm.bookRequests.length){
+               vm.noRequests = true;
+               return;
+             }
           })
           .catch(function(data){
             console.log('error....');
