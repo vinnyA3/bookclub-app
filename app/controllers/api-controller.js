@@ -109,6 +109,29 @@ exports.getUserInbox = function(req,res){
     });
 };
 
+exports.setApproval = function(req,res){
+  User.find({'bookRequests._id': req.body.bookRequestId}, function(err,users){
+
+    if(err){
+      console.log(err);
+      return res.send(err);
+    }
+    //users contains and array of users that contain the book requests
+    users.forEach(function(request){
+      //for each bookrequest, set the approved field to true
+      request.bookRequests.id(req.body.bookRequestId).approved = true;
+    });
+
+    //save the users
+    users.save(function(err){
+       if(err){
+         return res.send(err);
+       }
+       return res.send({success:true, message: 'successfully updated'});
+    });
+  });//end find
+};
+
 exports.getAccountInfo = function(req,res){
   User.find({'_id': req.user}, function(err,user){
      if(err){
