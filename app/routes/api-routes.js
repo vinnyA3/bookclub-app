@@ -36,7 +36,8 @@ module.exports = function(app,express){
 
   // === USER INBOX ========
   router.route('/inbox')
-    .get(auth.ensureAuthenticated, api.getUserInbox);
+    .get(auth.ensureAuthenticated, api.getUserInbox)
+    .put(auth.ensureAuthenticated, api.setApproval);
 
 
   //==== USER ACCOUNT ======
