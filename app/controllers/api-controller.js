@@ -120,15 +120,15 @@ exports.setApproval = function(req,res){
     users.forEach(function(request){
       //for each bookrequest, set the approved field to true
       request.bookRequests.id(req.body.bookRequestId).approved = true;
+      request.save(function(err){
+        if(err){
+          return res.send(err);
+        }
+        return;
+      });
     });
-
     //save the users
-    users.save(function(err){
-       if(err){
-         return res.send(err);
-       }
-       return res.send({success:true, message: 'successfully updated'});
-    });
+
   });//end find
 };
 
