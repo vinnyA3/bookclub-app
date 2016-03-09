@@ -24,13 +24,13 @@
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
       <div class="swap" ng-repeat="request in inbox.bookRequests | filter:{isUsersRequest: false}">
-          <div class="swap-content">
-            <p>User: <strong>{{request.to}}</strong><br><br>
-               Book: <strong>{{request.requestedBook}}</strong><br><br>
-               Status: Pending ...
-              <span class="swap-content-close fa fa-close"></span>
-            </p>
-          </div>
+          <ul class="swap-content">
+            <li>User: <strong>{{request.to}}</strong></li>
+            <li>Book: <strong>{{request.requestedBook}}</strong></li>
+            <li ng-show="!request.approved">Status: Pending ...</li>
+            <li ng-hide="!request.approved">Approved!</li>
+            <span class="swap-content-close fa fa-close"></span>
+          </ul>
       </div>
   </div>
 
