@@ -12,7 +12,8 @@
                <li><strong>{{request.requestedBook}}</strong></li>
                <li><i style="padding-left: 35px" class="fa fa-refresh"></i></li>
                <li><strong>{{request.swapFor}}</strong></li>
-               <button class="swap-content-approve">Approve?</button>
+               <button ng-show="!request.approved" ng-click="inbox.approve($index)" class="swap-content-approve">Approve?</button>
+               <li ng-hide="!request.approved"><i class="fa fa-check"></i>Approved</li>
               <span class="swap-content-close fa fa-close"></span>
           </ul>
       </div>
