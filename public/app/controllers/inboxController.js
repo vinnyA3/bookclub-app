@@ -24,6 +24,20 @@ angular.module('inboxCtrl', ['inboxService'])
           });
     };
 
+    //set approval
+    vm.approve = function(index){
+      //get the id if the clicked book request
+      var bookRequestId = vm.bookRequests[index]._id;
+      Inbox.setApproval(bookRequestId)
+        .then(function(data){
+          //refesh the requests
+          vm.getRequests();
+        })
+        .catch(function(data){
+          console.log('error...' + err);
+        });
+    };
+
     vm.getRequests();
 
   });
