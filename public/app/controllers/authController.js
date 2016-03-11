@@ -1,7 +1,10 @@
 angular.module('authCtrl', ['satellizer'])
   .controller('authController', function($location, $auth){
 
-    var vm = this;
+    var vm = this,
+        stateSelection = ['login','signup'];
+
+    vm.selection = stateSelection[0];
 
     vm.login = function(){
 			$auth.login({email: vm.user.email, password: vm.user.password})
@@ -39,5 +42,9 @@ angular.module('authCtrl', ['satellizer'])
             vm.errorMessage = 'Failed to sign up, please try again';
         });
 		};//end signup function
+
+    vm.select = function(index){
+      vm.selection = stateSelection[index];
+    }
 
   });
