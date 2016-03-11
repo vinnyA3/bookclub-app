@@ -1,11 +1,37 @@
+/* mixins ---refactored!! */
+
+
+@mixin colored-bar($background, $bottom-border){
+  position: absolute;
+  text-align: left;
+  border-style: inset;
+  border-top:none;
+  border-left:none;
+  border-right: none;
+  border-bottom:1px solid $bottom-border;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  top:0;
+  left:0;
+  background: $background;
+  color:white;
+  padding:8px 8px 8px 10px;
+  width:100%;
+}
+
 /* =============  ACCOUNT VIEW STYLES  =============== */
 .account{
   display: flex;
   flex-wrap: wrap;
 }
   .box{
+    padding:8px;
+    text-align: center;
     width: 100%;
-    height: 250px;
+    @include break(lg) {
+      text-align: left;
+      width: 50%
+    }
   }
   .account-image-container{
     padding:8px;
@@ -20,34 +46,66 @@
     box-shadow: 0 2px 4px 0 rgba(#000, .25);
   }
 
-  .account-user-info-container{
-    text-align: center;
-    padding:8px;
-    @include break(lg) {
-      width: 50%
+  .account-image-button{
+    border: none;
+    border-radius: 2px;
+    padding: 12px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    &:hover{
+      cursor: pointer;
+      background: rgb(70, 67, 114);
+      color: white;
     }
   }
-    .account-user-info-marker{
-      color:red;
-    }
-    .account-user-info-mail{
-      color: rgb(177, 173, 255);
-    }
 
+  .account-user-info-container{
+    text-align: center;
+  }
+      .account-user-info{
+        background: #fff;
+        padding: 20px 0px 20px 0px;
+        border-radius: 6px;
+        box-shadow: 0px 2px 1.5px rgba(0,0,0,0.4);
+      }
+      .account-user-info-marker{
+        color:red;
+      }
+      .account-user-info-mail{
+        color: rgb(177, 173, 255);
+      }
+      .account-user-info-button{
+        width: 30%;
+        height: 35px;
+        border: none;
+        border-radius: 2px;
+        font-weight: bold;
+        transition: all 0.4s ease;
+        &:hover{
+          cursor: pointer;
+          background: rgb(70, 67, 114);
+          color: white;
+        }
+      }
 
     /*  UPDATE INFO */
-    .account-update-info-container{
-      padding:8px;
-      text-align: center;
-      width: 100%;
-      @include break(lg) {
-        text-align: left;
-        width: 50%
-      }
+    .account-update-info{
+      width:100%;
+      height: 250px;
+      position: relative;
+      padding:60px 12px 12px 12px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0px 2px 1.5px rgba(0,0,0,0.4);
+      text-align: left;
     }
+      .account-update-info-bar{
+        @include colored-bar(rgb(63, 60, 112), rgb(63, 60, 112));
+      }
       .account-update-info-form{
         width: 100%;
       }
+
       .account-update-info-form input[type="text"]{
         height: 35px;
         width: 100%;
@@ -65,7 +123,7 @@
         transition: all 0.4s ease;
         &:hover{
           cursor: pointer;
-          background: #242249;
+          background: rgb(70, 67, 114);
           color: white;
         }
       }
@@ -73,15 +131,26 @@
     /* Delete Account !! */
     .account-delete-container{
       width: 100%;
-      padding: 8px;
       text-align: center;
-      margin-top: 70px;
       @include break(md) {
         text-align: right;
-        margin: 0;
         width: 50%;
       }
     }
+      .account-delete{
+        width:100%;
+        height: 250px;
+        padding:60px 12px 12px 12px;
+        position: relative;
+        padding-left: 8px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0px 2px 1.5px rgba(0,0,0,0.4);
+        text-align: left;
+      }
+      .account-delete-bar{
+        @include colored-bar(rgb(191, 13, 13), rgb(191, 13, 13));
+      }
       .account-delete-container-button{
         padding: 8px;
         border:none;
