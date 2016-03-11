@@ -22,8 +22,8 @@ module.exports = function(app,express){
 
   //======= SPECIFIC USER BOOK =====
   router.route('/user-books/:book_id')
-    //delete a book
-    .delete(auth.ensureAuthenticated, api.deleteBook);
+    //delete a book - and delete from book collection
+    .delete(auth.ensureAuthenticated, book.deleteBookFromBooks, api.deleteBook);
 
 
  //=== OTHER USERS' PROFILE PAGE ====
@@ -38,6 +38,9 @@ module.exports = function(app,express){
   router.route('/inbox')
     .get(auth.ensureAuthenticated, api.getUserInbox)
     .put(auth.ensureAuthenticated, api.setApproval);
+  //delete account
+  router.route('/inbox/:request_id')
+    .delete(auth.ensureAuthenticated, api.deleteRequest);
 
 
   //==== USER ACCOUNT ======
@@ -47,7 +50,7 @@ module.exports = function(app,express){
     //update account info
     .put(auth.ensureAuthenticated, api.updateAccountInfo)
     //delete account
-    .delete(auth.ensureAuthenticated, api.deleteAccount);
+    .delete(auth.ensureAuthenticated, book.deleteAllUsersBooks, api.deleteAccount);
 
   //return the express router
   return router;
