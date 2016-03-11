@@ -38,6 +38,19 @@ angular.module('inboxCtrl', ['inboxService'])
         });
     };
 
+    vm.deleteRequest = function(index){
+      var bookRequestId = vm.bookRequests[index]._id;
+      console.log(bookRequestId);
+      Inbox.deleteRequest(bookRequestId)
+        .then(function(data){
+          //refesh the inbox
+          vm.getRequests();
+        })
+        .catch(function(data){
+          console.log(data.err);
+        });
+    };
+
     vm.getRequests();
 
   });
