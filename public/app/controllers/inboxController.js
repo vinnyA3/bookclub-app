@@ -11,6 +11,7 @@ angular.module('inboxCtrl', ['inboxService'])
     vm.getRequests = function(){
         Inbox.getRequests()
           .then(function(data){
+            console.log(data);
             //set bookRequests variable
              vm.bookRequests = data[0].bookRequests;
              //if the book requests array is empty....
