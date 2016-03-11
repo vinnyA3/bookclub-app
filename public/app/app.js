@@ -12,7 +12,7 @@ angular.module('mainApp',[
   'usersCtrl',
   //directivez
   'navbarButtonDirective',
-  'libraryBookDirective',
+  'bookDirective',
   'modalDialogDirective',
   //servicez
   'bookService',
