@@ -2,10 +2,25 @@
   <div class="auth-container">
     <div class="intro-logo-container"><span class="fa fa-book"></span></div>
     <div ng-if="authenticate.error" class="errorMessage">{{authenticate.errorMessage}}</div>
-    <form ng-submit="authenticate.login()" class="auth-container-login">
-      <input ng-model="authenticate.user.email" class="auth-container-login-email" type="text" placeholder="&#xf1fa; &nbsp;Email"><br>
-      <input ng-model="authenticate.user.password" class="auth-container-login-password" type="password" placeholder="&#xf023; &nbsp;Password"><br>
-      <input type="submit" class="auth-container-login-submit" value="Login">
-    </form>
+
+      <div class="auth-container-view-switch" ng-switch on="authenticate.selection">
+
+        <form ng-submit="authenticate.login()" ng-switch-when="login" class="auth-container-login">
+          <input ng-model="authenticate.user.email" class="auth-container-login-email" type="text" placeholder="&#xf1fa; &nbsp;Email"><br>
+          <input ng-model="authenticate.user.password" class="auth-container-login-password" type="password" placeholder="&#xf023; &nbsp;Password"><br>
+          <input type="submit" class="auth-container-login-submit" value="Login">
+          <span class="authenticate-switch-text">Not registered? <span class="authenticate-switch-text-link" ng-click="authenticate.select(1)">Sign Up!</span></span>
+        </form>
+
+        <form ng-submit="authenticate.signup()" ng-switch-when="signup" class="auth-container-login">
+          <input ng-model="authenticate.user.name" class="auth-container-login-email" type="text" placeholder="&#xf007; &nbsp;Name"><br>
+          <input ng-model="authenticate.user.email" class="auth-container-login-email" type="text" placeholder="&#xf1fa; &nbsp;Email"><br>
+          <input ng-model="authenticate.user.password" class="auth-container-login-password" type="password" placeholder="&#xf023; &nbsp;Password"><br>
+          <input type="submit" class="auth-container-login-submit" value="Sign Up">
+          <span class="authenticate-switch-text">Already a member? <span class="authenticate-switch-text-link" ng-click="authenticate.select(0)">Login</span></span>
+        </form>
+
+      </div>
+
   </div>
 </div>
