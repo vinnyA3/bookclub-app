@@ -14,8 +14,8 @@
 
   <h1>&nbsp;My books</h1>
   <div class="yourBooks">
-    <div ng-repeat="book in books.yourBooks" class="yourBooks-book-container">
-      <library-book ng-click="books.deleteBook($index)" book="book"></library-book>
+    <div ng-repeat="book in books.yourBooks" class="book-container">
+      <book-directive ng-click="books.deleteBook($index)" book="book"></book-directive>
     </div>
   </div>
 </div>

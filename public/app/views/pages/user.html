@@ -3,34 +3,40 @@
     <navbar-toggle></navbar-toggle>
 
     <div class="user-container">
-      <div class="user-info-container">
-        <img gravatar-src="user.userData.email" gravatar-size="225">
-        <p>{{user.userData.name}}</p>
-        <p><i class="fa fa-map-marker account-user-info-marker"></i>&nbsp; {{user.userData.location}}</p>
-        <p><i class="fa fa-envelope account-user-info-mail"></i>&nbsp; {{user.userData.email}}</p>
+
+      <div class="user-info-container box">
+        <div class="user-info">
+          <img gravatar-src="user.userData.email" gravatar-size="225">
+          <p>{{user.userData.name}}</p>
+          <p><i class="fa fa-map-marker account-user-info-marker"></i>&nbsp; {{user.userData.location}}</p>
+          <p><i class="fa fa-envelope account-user-info-mail"></i>&nbsp; {{user.userData.email}}</p>
+        </div>
       </div>
 
-      <div id="requested" class="requested-book-container">
-        <img style="height:200px; width: 180px" ng-src="{{user.requestedBook.imgLink}}">
-        <p> Book: {{user.requestedBook.title}}<p>
-        <button ng-click="user.toggleModal()">Request Swap</button>
+      <div id="requested" class="requested-book-container box">
+        <div class="requested-book">
+          <img style="height:200px; width: 180px" ng-src="{{user.requestedBook.imgLink}}">
+          <p> Book: {{user.requestedBook.title}}<p>
+          <button class="requested-book-button" ng-click="user.toggleModal()">Request Swap</button>
 
-        <modal-dialog show='user.modalShown' height='auto'>
-            <br>Request: {{user.requestedBook.title}}<br><br>
-           <label for="swap-for">Swap for:
-             &nbsp;<input type="text" ng-model="user.swapTitle" placeholder="Your book title to swap"> </input><br><br>
-           </label>
-           <input ng-click="user.sendBookRequest()" type="submit"> </input>
-        </modal-dialog>
+          <modal-dialog show='user.modalShown' height='auto'>
+              <br>Request: {{user.requestedBook.title}}<br><br>
+             <label for="swap-for">Swap for:
+               &nbsp;<input type="text" ng-model="user.swapTitle" placeholder="Your book title to swap"> </input><br><br>
+             </label>
+             <input class="ng-modal-submit" ng-click="user.sendBookRequest()" type="submit"> </input>
+          </modal-dialog>
 
+        </div>
       </div>
+
     </div>
 
     <br><br>
     <h1>{{user.userData.name}}'s books</h1>
     <div class="userBooks">
-      <div class="userBooks-book-container" ng-repeat="book in user.userData.books">
-          <library-book ng-click="user.setRequestedBook($index)" book="book"></library-book>
+      <div class="book-container" ng-repeat="book in user.userData.books">
+          <book-directive ng-click="user.setRequestedBook($index)" book="book"></book-directive>
       </div>
     </div>
 
