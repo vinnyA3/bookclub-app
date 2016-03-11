@@ -1,5 +1,5 @@
-angular.module('accountCtrl', ['accountService'])
-  .controller('accountController', function(Account){
+angular.module('accountCtrl', ['satellizer','accountService'])
+  .controller('accountController', function($auth, Account, $location){
     var vm = this;
 
     vm.accountCreds = {};
@@ -9,7 +9,7 @@ angular.module('accountCtrl', ['accountService'])
     vm.getAccount = function(){
       Account.getAccountInfo()
         .then(function(data){
-      
+
           vm.accountCreds.name = data[0].name;
           vm.accountCreds.email = data[0].email;
           vm.accountCreds.location = data[0].location;
@@ -32,6 +32,19 @@ angular.module('accountCtrl', ['accountService'])
           console.log('error ....');
         });
     };
+
+    vm.deleteAccount = function(){
+      Account.deleteAccount()
+        .then(function(){
+          $auth.logout()
+            .then(function(){
+              $location.path('/');
+            });
+        })
+        .catch(function(){
+          console.log('error...');
+        });
+    }
 
     //call get account
     vm.getAccount();
