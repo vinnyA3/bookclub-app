@@ -6,7 +6,7 @@
   <div class="swap-container">
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
-      <div class="swap" ng-repeat="request in inbox.bookRequests | filter: {isUsersRequest: true}">
+      <div class="swap" ng-repeat="request in inbox.bookRequestsForUser">
 
         <div class="swap-content-container">
 
@@ -18,7 +18,7 @@
                  <li ng-hide="!request.approved"><i class="fa fa-check"></i>Approved</li>
             </ul>
             <button ng-show="!request.approved" ng-click="inbox.approve($index)" class="swap-content-approve">Approve?</button>
-            <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
+            <span ng-click="inbox.deleteRequestForUser($index)" class="swap-content-close fa fa-close"></span>
          </div>
 
       </div>
@@ -29,7 +29,7 @@
   <div class="swap-container">
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
-      <div class="swap" ng-repeat="request in inbox.bookRequests | filter:{isUsersRequest: false}">
+      <div class="swap" ng-repeat="request in inbox.outstandingBookRequests">
 
         <div class="swap-content-container">
 
@@ -40,7 +40,7 @@
               <li ng-hide="!request.approved">Approved!</li>
             </ul>
 
-            <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
+            <span ng-click="inbox.deleteOutstandingRequest($index)" class="swap-content-close fa fa-close"></span>
         </div>
 
       </div>
