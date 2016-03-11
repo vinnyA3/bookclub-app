@@ -1,7 +1,9 @@
 /* =============  INBOX  ============ */
 .swap-container{
     width:100%;
-    max-height: 300px;
+    height: 250px;
+    background: rgb(219, 219, 219);
+    border-radius: 6px;
     margin-bottom: 120px;
     overflow-y: scroll;
     display: flex;
@@ -11,28 +13,30 @@
       width: 100%;
       padding: 4px;
       height:167px;
+      position: relative;
       @include break(md) {
         width: 50%;
       }
   }
-    .swap-content{
-      height:100%;
-      width:100%;
-      background: rgb(244, 244, 244);
-      border-radius: 2px;
-      box-shadow: 0 2px 4px 0 rgba(#000, .25);
+    .swap-content-container{
       position: relative;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      padding-left: 5px;
+      height: 100%;
+      width: 100%;
+      padding-top: 50px;
+      padding-left: 10px;
+      background: rgb(244, 244, 244);
+      border-radius: 6px;
+      box-shadow: 0 2px 4px 0 rgba(#000, .25);
       transition: all 0.7s ease;
+    }
+    .swap-content-bar{
+      @include colored-bar(rgb(63, 60, 112), rgb(63, 60, 112));
+    }
+    .swap-content{
+      margin: 0;
+      padding: 0;
       > li{
         list-style-type: none;
-      }
-      &:hover{
-        background-color: rgb(36, 34, 73);
-        color: rgb(244, 244, 244);
-        box-shadow: 0 2px 4px 0 rgba(#000, .45)
       }
     }
       .swap-content-close{
@@ -40,11 +44,12 @@
         top:4px;
         right:4px;
         padding:8px;
-        color: rgba(68, 68, 68,0.4);
+        z-index:300;
+        color: rgb(244, 244, 244);
         transition: all 0.4s ease;
         &:hover{
           cursor: pointer;
-          color:red;
+          color:rgb(232, 46, 46);
         }
       }
       .swap-content-approve{
