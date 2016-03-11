@@ -7,30 +7,42 @@
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
       <div class="swap" ng-repeat="request in inbox.bookRequests | filter: {isUsersRequest: true}">
-          <ul class="swap-content">
-            <li>From: <strong>{{request.from}}</strong></li>
-               <li><strong>{{request.requestedBook}}</strong></li>
-               <li><i style="padding-left: 35px" class="fa fa-refresh"></i></li>
-               <li><strong>{{request.swapFor}}</strong></li>
-               <button ng-show="!request.approved" ng-click="inbox.approve($index)" class="swap-content-approve">Approve?</button>
-               <li ng-hide="!request.approved"><i class="fa fa-check"></i>Approved</li>
-              <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
-          </ul>
+
+        <div class="swap-content-container">
+
+          <div class="swap-content-bar">From: <strong>{{request.from}}</strong></div>
+            <ul class="swap-content">
+                 <li><strong>{{request.requestedBook}}</strong></li>
+                 <li><i style="padding-left: 35px" class="fa fa-exchange"></i></li>
+                 <li><strong>{{request.swapFor}}</strong></li>
+                 <li ng-hide="!request.approved"><i class="fa fa-check"></i>Approved</li>
+            </ul>
+            <button ng-show="!request.approved" ng-click="inbox.approve($index)" class="swap-content-approve">Approve?</button>
+            <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
+         </div>
+
       </div>
 
   </div>
+
   <h2>Your outstanding swap requests</h2>
   <div class="swap-container">
       <!--ng repeat -->
       <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
       <div class="swap" ng-repeat="request in inbox.bookRequests | filter:{isUsersRequest: false}">
-          <ul class="swap-content">
-            <li>User: <strong>{{request.to}}</strong></li>
-            <li>Book: <strong>{{request.requestedBook}}</strong></li>
-            <li ng-show="!request.approved">Status: Pending ...</li>
-            <li ng-hide="!request.approved">Approved!</li>
+
+        <div class="swap-content-container">
+
+          <div class="swap-content-bar">To: <strong>{{request.to}}</strong></div>
+            <ul class="swap-content">
+              <li>Book: <strong>{{request.requestedBook}}</strong></li>
+              <li ng-show="!request.approved">Status: Pending ...</li>
+              <li ng-hide="!request.approved">Approved!</li>
+            </ul>
+
             <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
-          </ul>
+        </div>
+
       </div>
   </div>
 
