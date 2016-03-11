@@ -13,7 +13,8 @@
   </div>
 
   <h1>&nbsp;My books</h1>
-  <div class="yourBooks">
+  <!-- Book Component -->
+  <div class="book-component-wrapper">
     <div ng-repeat="book in books.yourBooks" class="book-container">
       <book-directive ng-click="books.deleteBook($index)" book="book"></book-directive>
     </div>

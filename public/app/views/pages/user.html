@@ -34,7 +34,9 @@
 
     <br><br>
     <h1>{{user.userData.name}}'s books</h1>
-    <div class="userBooks">
+
+    <!-- Book Component -->
+    <div class="book-component-wrapper">
       <div class="book-container" ng-repeat="book in user.userData.books">
           <book-directive ng-click="user.setRequestedBook($index)" book="book"></book-directive>
       </div>

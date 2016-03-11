@@ -8,9 +8,12 @@
         <p class="library-intro-text">Welcome to the Library. &nbsp;Click on a book to request a swap!</p>
       </div>
   </div>
-  <div class="library">
+
+  <!-- book component -->
+  <div class="book-component-wrapper">
     <div ng-repeat="book in library.libraryBooks" class="book-container">
       <a ui-sref="user({id:book.owner, book_id:book._id})"><book-directive book="book"></book-directive></a>
     </div>
   </div>
+
 </div>
