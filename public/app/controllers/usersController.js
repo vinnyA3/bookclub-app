@@ -24,8 +24,8 @@ angular.module('usersCtrl', ['usersService','accountService'])
     vm.currentUserInfo = function(){
       Account.getAccountInfo()
         .then(function(data){
-          //set the current user's name - will be passed into the sendBookRequest function
-           currentUserName = data[0].name;
+            //set the current user's name - will be passed into the sendBookRequest function
+             currentUserName = data[0].name;
         })
         .catch(function(data){
              console.log('error....');
@@ -35,8 +35,13 @@ angular.module('usersCtrl', ['usersService','accountService'])
     vm.getUserInfo = function(){
       User.getUserInfo($stateParams.id)
         .then(function(data){
+          //if we have true for logged in user (logged in user's page), redirect to user's account page
+          if(data.logged_in_user === true){
+            $location.path('/account');
+          }else{
             vm.userData = data[0];
             vm.requestedBook = searchRequestedBook(vm.userData.books, bookId);
+          }
         })
         .catch(function(data){
             console.log('error...');
