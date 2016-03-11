@@ -2,7 +2,7 @@
 <div class="main your-books">
   <navbar-toggle></navbar-toggle>
 
-  <div class="your-books-add-container">
+  <div class="your-books-add-container box">
     <div class="your-books-add-container-form">
       <h1><i class="fa fa-plus"></i> Add a Book</h1>
       <form ng-submit="books.addBook()" class="your-books-add-container-form">
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <h1>&nbsp;My books</h1>
+  <h1>&nbsp;Your books</h1>
   <!-- Book Component -->
   <div class="book-component-wrapper">
     <div ng-repeat="book in books.yourBooks" class="book-container">
