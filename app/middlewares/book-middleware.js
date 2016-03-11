@@ -6,7 +6,7 @@ var User = require('../models/user'),
 
 // ================ GOOGLE BOOKS API MIDDLWWARE =============================
 exports.getBookCovers = function(req,res,next){
-  
+
     var bookTitle = req.body.title;
     //call google books api
     googlebooks.volumes.list({
@@ -54,4 +54,22 @@ exports.getBookCovers = function(req,res,next){
 
     });//end find
 
+  };
+//===== MIDDLEWARE- Delete book from Book collection ==============
+  exports.deleteBookFromBooks = function(req,res,next){
+    Book.remove({'_id': req.params.book_id}, function(err){
+      if(err){
+        return res.send(err);
+      }
+      return res.send({success: true, message: 'Success.  Book deleted'});
+    })
+  };
+  //===== MIDDLEWARE- Delete all book from Book collection with user Id===
+  exports.deleteAllUsersBooks = function(req,res,next){
+    Book.remove({'owner': req.user}, function(err){
+      if(err){
+        return res.send(err);
+      }
+      return res.send({success:true, message: 'Success. User\'s books deleted'});
+    });
   };
