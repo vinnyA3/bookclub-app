@@ -65,6 +65,11 @@ exports.getOtherUsersBooks = function(req,res){
           console.log(err);
           return res.send(err);
         }
+        //if the req.user is the name as the passed in params, send a logged_in_user: true to redirect to user's account page
+        if(req.user === req.params.user_id){
+          return res.send({logged_in_user: true});
+        }
+        //return the user information
         return res.send(user);
       });
 };
@@ -110,26 +115,52 @@ exports.getUserInbox = function(req,res){
 };
 
 exports.setApproval = function(req,res){
-  User.find({'bookRequests._id': req.body.bookRequestId}, function(err,users){
+  User.find(
+    {'bookRequests._id': req.body.bookRequestId},
+  //callback
+  function(err,users){
 
     if(err){
       console.log(err);
       return res.send(err);
     }
-    //users contains and array of users that contain the book requests
+
+    for(var i = 0; i < users.length; ++i){
+      users[i].bookRequests.id(req.body.bookRequestId).approved = true;
+      console.log(users[i]);
+      users[i].save();
+    }
+
+    console.log('success!!');
+    return res.send({success: true, message: 'successfully updated'});
+    /*users contains and array of users that contain the book requests
     users.forEach(function(request){
+      console.log('looping...');
       //for each bookrequest, set the approved field to true
       request.bookRequests.id(req.body.bookRequestId).approved = true;
-      request.save(function(err){
-        if(err){
-          return res.send(err);
-        }
-        return;
-      });
+
     });
-    //save the users
+    //save the users*/
 
   });//end find
+};
+
+exports.deleteRequest = function(req,res){
+  User.findOne({'_id': req.user}, function(err,user){
+    if(err){
+      return res.send(err);
+    }
+    console.log(req.params.request_id);
+    console.log(user);
+    user.bookRequests.id(req.params.request_id).remove();
+
+    user.save(function(err){
+      if(err){
+        return res.send(err)
+      }
+      return res.send({success: true, message: 'Request deletion successful'});
+    })
+  });
 };
 
 exports.getAccountInfo = function(req,res){
@@ -168,7 +199,7 @@ exports.updateAccountInfo = function(req,res){
 };
 
 exports.deleteAccount = function(req,res){
-  User.remove({'_id': req.user}, function(err){
+  User.findOneAndRemove({'_id':req.user}, function(err){
     if(err){
       return res.send(err);
     }
