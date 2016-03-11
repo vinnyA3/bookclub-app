@@ -26,17 +26,25 @@
   box-shadow: 4px 4px 80px #000;
 }
 .ng-modal-dialog-content {
-  padding:10px;
+  padding:20px;
   text-align: center;
+  font-size: 1.2em;
 }
-.ng-modal-close {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  padding: 5px;
-  cursor: pointer;
-  font-size: 120%;
-  display: inline-block;
-  font-weight: bold;
-  font-family: 'arial', 'sans-serif';
-}
+  .ng-modal-dialog-content input[type="text"]{
+    height: 35px;
+    padding:12px;
+  }
+  .ng-modal-submit{
+    @include main-button;
+  }
+  .ng-modal-close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
+  }

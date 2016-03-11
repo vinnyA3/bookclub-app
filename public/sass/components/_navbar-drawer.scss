@@ -1,0 +1,54 @@
+/* =============== DRAWER NAVIGATION ================== */
+/* nav view bug override */
+.nav-view{
+  height: 100%;
+}
+  .drawer-nav{
+    background-color: rgb(36, 34, 73);
+    color:rgb(237, 237, 237);
+    text-align: center;
+    height:100%;
+    width: 300px;
+    padding: 25px;
+    position: fixed;
+    z-index: 2000;
+    box-shadow: 3px 0px 6px 6px rgba(0,0,0,0.4);
+    @include transform-translate(-300px,0);
+    transition: transform 0.3s ease;
+    @include break(lg) {
+      position: fixed;
+      top:0px;
+      bottom:0px;
+      left:0px;
+      transform: translate(0,0);
+    }
+  }
+    .drawer-nav-profile{
+      display: block;
+      font-size: 4em;
+    }
+    .drawer-nav-creator-list{
+      display: inline-block;
+      position: absolute;
+      left:48px;
+      bottom:14px;
+      .drawer-nav-creator-list-item{
+        list-style-type: none;
+        display: inline;
+      }
+    }
+    .drawer-nav-profile-inbox{
+      position: relative;
+      .drawer-nav-profile-inbox-alert{
+        position:relative;
+        z-index: 3;
+        background: red;
+        border-radius: 20px;
+        height: 7px;
+        width: 7px;
+      }
+    }
+
+    .js-drawer-nav-open{
+      @include transform-translate(0,0);
+    }

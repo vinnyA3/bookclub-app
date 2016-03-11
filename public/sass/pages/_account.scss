@@ -1,23 +1,3 @@
-/* mixins ---refactored!! */
-
-
-@mixin colored-bar($background, $bottom-border){
-  position: absolute;
-  text-align: left;
-  border-style: inset;
-  border-top:none;
-  border-left:none;
-  border-right: none;
-  border-bottom:1px solid $bottom-border;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  top:0;
-  left:0;
-  background: $background;
-  color:white;
-  padding:8px 8px 8px 10px;
-  width:100%;
-}
 
 /* =============  ACCOUNT VIEW STYLES  =============== */
 .account{
@@ -47,16 +27,7 @@
   }
 
   .account-image-button{
-    border: none;
-    border-radius: 2px;
-    padding: 12px;
-    font-weight: bold;
-    transition: all 0.4s ease;
-    &:hover{
-      cursor: pointer;
-      background: rgb(70, 67, 114);
-      color: white;
-    }
+    @include main-button;
   }
 
   .account-user-info-container{
@@ -75,17 +46,7 @@
         color: rgb(177, 173, 255);
       }
       .account-user-info-button{
-        width: 30%;
-        height: 35px;
-        border: none;
-        border-radius: 2px;
-        font-weight: bold;
-        transition: all 0.4s ease;
-        &:hover{
-          cursor: pointer;
-          background: rgb(70, 67, 114);
-          color: white;
-        }
+        @include main-button;
       }
 
     /*  UPDATE INFO */
@@ -115,17 +76,10 @@
         margin-bottom: 12px;
       }
       .account-update-info-form input[type="submit"]{
-        width: 30%;
-        height: 35px;
-        border: none;
-        border-radius: 2px;
-        font-weight: bold;
-        transition: all 0.4s ease;
-        &:hover{
-          cursor: pointer;
-          background: rgb(70, 67, 114);
-          color: white;
-        }
+        @include main-button;
+      }
+      .account-update-info form input:focus{
+        outline: rgba(0, 153, 204, 0.3) solid 1px;
       }
 
     /* Delete Account !! */
