@@ -14,7 +14,7 @@
                <li><strong>{{request.swapFor}}</strong></li>
                <button ng-show="!request.approved" ng-click="inbox.approve($index)" class="swap-content-approve">Approve?</button>
                <li ng-hide="!request.approved"><i class="fa fa-check"></i>Approved</li>
-              <span class="swap-content-close fa fa-close"></span>
+              <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
           </ul>
       </div>
 
@@ -29,7 +29,7 @@
             <li>Book: <strong>{{request.requestedBook}}</strong></li>
             <li ng-show="!request.approved">Status: Pending ...</li>
             <li ng-hide="!request.approved">Approved!</li>
-            <span class="swap-content-close fa fa-close"></span>
+            <span ng-click="inbox.deleteRequest($index)" class="swap-content-close fa fa-close"></span>
           </ul>
       </div>
   </div>

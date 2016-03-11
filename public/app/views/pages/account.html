@@ -3,30 +3,38 @@
   <navbar-toggle></navbar-toggle>
   <div class="account-image-container box">
       <!--<div class="account-image"></div>-->
-      <img class="account-image" gravatar-src="account.accountCreds.email" gravatar-size="250">
+      <img class="account-image" gravatar-src="account.accountCreds.email" gravatar-size="190">
+      <p>Avatar managed by Gravatar</p>
+      <a href="http://en.gravatar.com/" target="_blank"><button class="account-image-button">Change Image</button></a>
   </div>
 
   <div class="account-user-info-container box">
-    <h2>{{account.accountCreds.name}}</h2>
-    <p><i class="fa fa-map-marker account-user-info-marker"></i> &nbsp;{{account.accountCreds.location}}<p>
-    <p><i class="fa fa-envelope account-user-info-mail"></i> &nbsp;{{account.accountCreds.email}}<p>
-    <a ui-sref="your-books"><button class=""><i class="fa fa-book account-user-info-mail"></i> Books</button></a>
+    <div class="account-user-info">
+      <h2>{{account.accountCreds.name}}</h2>
+      <p><i class="fa fa-map-marker account-user-info-marker"></i> &nbsp;{{account.accountCreds.location}}<p>
+      <p><i class="fa fa-envelope account-user-info-mail"></i> &nbsp;{{account.accountCreds.email}}<p>
+      <a ui-sref="your-books"><button class="account-user-info-button">Books</button></a>
+    </div>
   </div>
 
   <div class="account-update-info-container box">
-    <h3>Update Info</h3>
-    <form ng-submit="account.updateAccountInfo()" class="account-update-info-form">
-      <input type="text" ng-model="account.accountInfo.name" class="account-update-info-form-name" placeholder="Name">
-      <input type="text" ng-model="account.accountInfo.location" class="account-update-info-form-location" placeholder="Location">
-      <input type="text" ng-model="account.accountInfo.email" class="account-update-info-form-email" placeholder="Email">
-      <input type="submit" class="account-update-info-form-submit" value="Update">
-    </form>
+    <div class="account-update-info">
+      <div class="account-update-info-bar"><i class="fa fa-info-circle"></i> &nbsp;<strong>Update Info</strong></div>
+        <form ng-submit="account.updateAccountInfo()" class="account-update-info-form">
+          <input type="text" ng-model="account.accountInfo.name" class="account-update-info-form-name" placeholder="Name">
+          <input type="text" ng-model="account.accountInfo.location" class="account-update-info-form-location" placeholder="Location">
+          <input type="text" ng-model="account.accountInfo.email" class="account-update-info-form-email" placeholder="Email">
+          <input type="submit" class="account-update-info-form-submit" value="Update">
+        </form>
+    </div>
   </div>
 
   <div class="account-delete-container box">
-    <h3>Better call Kenny Loggins...</h3>
-    <button class="account-delete-container-button">Delete Account?</button>
-    <h3>Cause you're in the <strong>Danger</strong> Zone!</h3>
+    <div class="account-delete">
+      <div class="account-delete-bar"><i class="fa fa-warning"></i> &nbsp;<strong>Delete Account</strong></div>
+      <p>Better call Kenny Loggins ... Cause you're in the <strong>Danger Zone</strong>!</p>
+      <button ng-click="account.deleteAccount()" class="account-delete-container-button">Delete Account?</button>
+    </div>
   </div>
 
 </div>
