@@ -31,11 +31,3 @@
     .requested-book-button{
       @include main-button;
     }
-
-
-
-.userBooks{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
