@@ -5,7 +5,7 @@
   <h2>Swap requests for you</h2>
   <div class="swap-container">
       <!--ng repeat -->
-      <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
+      <p ng-if="inbox.noRequests">&nbsp;&nbsp;{{inbox.noRequestMessage}}<p>
       <div class="swap" ng-repeat="request in inbox.bookRequestsForUser">
 
         <div class="swap-content-container">
@@ -28,7 +28,7 @@
   <h2>Your outstanding swap requests</h2>
   <div class="swap-container">
       <!--ng repeat -->
-      <p ng-if="inbox.noRequests">{{inbox.noRequestMessage}}<p>
+      <p ng-if="inbox.noRequests">&nbsp;&nbsp;{{inbox.noRequestMessage}}<p>
       <div class="swap" ng-repeat="request in inbox.outstandingBookRequests">
 
         <div class="swap-content-container">
