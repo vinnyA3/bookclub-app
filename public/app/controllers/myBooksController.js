@@ -1,5 +1,5 @@
 angular.module('yourBooksCtrl', ['bookService'])
-  .controller('yourBooksController', function(Book){
+  .controller('yourBooksController', ['Book', function(Book){
     var vm = this;
 
     vm.yourBooks = [];
@@ -48,4 +48,4 @@ angular.module('yourBooksCtrl', ['bookService'])
     //call get user books
     vm.getBooks();
 
-  });
+  }]);

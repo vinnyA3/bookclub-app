@@ -1,5 +1,5 @@
 angular.module('inboxService',[])
-  .factory('Inbox', function($q,$http){
+  .factory('Inbox', ['$q', '$http', function($q,$http){
     var inboxService = {
       getRequests: getRequests,
       setApproval: setApproval,
@@ -51,4 +51,4 @@ angular.module('inboxService',[])
 
     return inboxService;
 
-  });
+  }]);

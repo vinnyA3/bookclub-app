@@ -1,5 +1,5 @@
 angular.module('libraryCtrl', ['bookService'])
-  .controller('libraryController', function(Book){
+  .controller('libraryController', ['Book', function(Book){
     var vm = this;
 
     vm.libraryBooks = [];
@@ -18,4 +18,4 @@ angular.module('libraryCtrl', ['bookService'])
     //call get all books
     vm.getBooks();
 
-  });
+  }]);

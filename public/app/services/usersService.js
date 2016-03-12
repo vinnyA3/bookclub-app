@@ -1,6 +1,6 @@
 //User Service - service used to get other user's information
 angular.module('usersService',[])
-  .factory('User', function($q,$http){
+  .factory('User', ['$q', '$http', function($q,$http){
       var userService = {
         getUserInfo: getUserInfo,
         //create book request
@@ -36,4 +36,4 @@ angular.module('usersService',[])
       };
 
       return userService;
-  });
+  }]);

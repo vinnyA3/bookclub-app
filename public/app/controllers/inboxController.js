@@ -1,5 +1,5 @@
 angular.module('inboxCtrl', ['inboxService'])
-  .controller('inboxController', function(Inbox){
+  .controller('inboxController', ['Inbox', function(Inbox){
 
     var vm = this,
         currentUser = null;
@@ -79,4 +79,4 @@ angular.module('inboxCtrl', ['inboxService'])
 
     vm.getRequests();
 
-  });
+  }]);

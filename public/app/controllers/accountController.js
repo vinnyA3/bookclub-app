@@ -1,5 +1,5 @@
 angular.module('accountCtrl', ['satellizer','accountService'])
-  .controller('accountController', function($auth, Account, $location){
+  .controller('accountController', ['$auth', 'Account','$location', function($auth, Account, $location){
     var vm = this;
 
     vm.accountCreds = {};
@@ -48,4 +48,5 @@ angular.module('accountCtrl', ['satellizer','accountService'])
 
     //call get account
     vm.getAccount();
-  });
+
+  }]);

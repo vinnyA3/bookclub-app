@@ -1,5 +1,5 @@
 angular.module('authCtrl', ['satellizer'])
-  .controller('authController', function($location, $auth){
+  .controller('authController', ['$location','$auth', function($location, $auth){
 
     var vm = this,
         stateSelection = ['login','signup'];
@@ -47,4 +47,4 @@ angular.module('authCtrl', ['satellizer'])
       vm.selection = stateSelection[index];
     }
 
-  });
+  }]);

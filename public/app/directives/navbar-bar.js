@@ -1,5 +1,5 @@
 angular.module('navbarButtonDirective',[])
-  .directive('navbarToggle',function(){
+  .directive('navbarToggle',[function(){
     return {
       restrict:'E',
       template:'<div><span class="main-hamburger fa fa-bars"></span><div>',
@@ -18,4 +18,4 @@ angular.module('navbarButtonDirective',[])
         })
       }
     }
-  });
+  }]);

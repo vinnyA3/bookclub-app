@@ -1,5 +1,5 @@
 angular.module('bookService', [])
-  .factory('Book',function($q,$http){
+  .factory('Book', ['$q', '$http', function($q,$http){
     var bookFactory = {
       getAllBooks: getAllBooks,
       getUserBooks: getUserBooks,
@@ -76,4 +76,4 @@ angular.module('bookService', [])
     };
 
     return bookFactory;
-  });
+  }]);

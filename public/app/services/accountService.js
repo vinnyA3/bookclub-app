@@ -1,5 +1,5 @@
 angular.module('accountService', [])
-  .factory('Account', function($q,$http){
+  .factory('Account', ['$q', '$http', function($q,$http){
     var accountService = {
       getAccountInfo: getAccountInfo,
       updateInfo: updateInfo,
@@ -51,4 +51,4 @@ angular.module('accountService', [])
     };
 
     return accountService;
-  });
+  }]);

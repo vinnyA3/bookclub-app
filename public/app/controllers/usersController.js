@@ -1,5 +1,5 @@
 angular.module('usersCtrl', ['usersService','accountService'])
-  .controller('usersController', function(User, Account, $stateParams, $location, $anchorScroll){
+  .controller('usersController', ['User', 'Account', '$stateParams', '$location', '$anchorScroll', function(User, Account, $stateParams, $location, $anchorScroll){
 
     var vm = this;
     var bookId = $stateParams.book_id; //book id from url param
@@ -85,4 +85,4 @@ angular.module('usersCtrl', ['usersService','accountService'])
     //get the current user's info -  name
     vm.currentUserInfo();
 
-  });
+  }]);

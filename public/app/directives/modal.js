@@ -1,5 +1,5 @@
 angular.module('modalDialogDirective',[])
-  .directive('modalDialog', function() {
+  .directive('modalDialog', [function() {
       return {
         restrict: 'E',
         scope: {
@@ -21,4 +21,4 @@ angular.module('modalDialogDirective',[])
           };
         }
       };
-    });
+    }]);

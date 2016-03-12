@@ -1,5 +1,5 @@
 angular.module('appRoutes',['ui.router'])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider){
+  .config(function['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider){
     $stateProvider
       .state('auth', {
         url: '/',
@@ -88,4 +88,4 @@ angular.module('appRoutes',['ui.router'])
 			return deffered.promise;
 		}
 
-  });
+  }]);

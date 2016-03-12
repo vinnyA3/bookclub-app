@@ -1,5 +1,5 @@
 angular.module('navbarCtrl', ['satellizer'])
-  .controller('navbarController', function($auth, $location){
+  .controller('navbarController', ['$auth', '$location', function($auth, $location){
     var vm = this;
 
     //logout function
@@ -10,4 +10,4 @@ angular.module('navbarCtrl', ['satellizer'])
         });
     };
 
-  });
+  }]);
