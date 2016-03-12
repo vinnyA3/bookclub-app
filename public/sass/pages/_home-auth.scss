@@ -20,19 +20,19 @@
   }
   .auth-container{
     width: 85%;
-    padding: 20px;
+    padding: 40px 5px 60px 5px;
     margin:0 auto;
     border-radius: 2px;
     box-shadow: 2px 2px 8px 3px rgba(0,0,0,0.7);
-    margin-top: 200px;
+    margin-top: 20%;
     text-align: center;
     background: rgb(234, 234, 234);
     @include break(md) {
+      margin-top: 10%;
+      padding: 40px 20px 60px 20px;
       width: 65%;
     }
-    @include break(lg) {
-      width: 45%;
-    }
+
   }
     .auth-container-login{
       width: 100%;
@@ -50,6 +50,11 @@
          border:none;
          color: white;
          font-weight: bolder;
+         transition: all 0.4s ease;
+         &:hover{
+           cursor: pointer;
+           background: rgb(50, 48, 94);
+         }
       }
       .authenticate-switch-text{
         display:block;

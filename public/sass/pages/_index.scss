@@ -6,11 +6,20 @@ views/pages */
   box-sizing: border-box;
 }
 
+
 html,body,.main,.main-view{
   background:#F6F8F8;
   width:100%;
   height:100%;
   margin:0;
+}
+
+html,body{
+  @include break(xx) {
+    width: 1200px;
+    margin-left:auto;
+    margin-right:auto;
+  }
 }
 
 body,.main-view{
@@ -41,13 +50,19 @@ a{
 /* ================  MAIN DIV  ======================== */
 .main{
   color: #4b5051;
-  padding: 30px;
+  padding: 30px 15px 15px 15px;
+  @include break(sm) {
+      padding:30px 20px 20px 20px
+  };
   @include break(lg) {
       flex-grow: 1;
       margin-left:300px;
   };
+
 }
   .main-hamburger{
+    font-size: 1.8em;
+    margin-bottom: 40px;
     @include break(lg) {
       display:none;
     }

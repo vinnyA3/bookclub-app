@@ -4,15 +4,22 @@
   flex-wrap: wrap;
 }
   .book-container{
-    width: 100%;
+    width: 50%;
     padding: 8px;
-    height: 280px;
+    height: 230px;
     z-index:3;
     overflow: hidden;
     @include break(sm) {
+      height: 280px;
       width: 50%;
     }
     @include break(md) {
+      height: 350px;
+    };
+    @include break(lg) {
+      width: 50%;
+    }
+    @include break(xl) {
       width: 33%;
     }
   }
