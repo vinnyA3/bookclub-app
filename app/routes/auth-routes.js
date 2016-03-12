@@ -10,7 +10,7 @@ module.exports = function(app,express){
    // ============== CREATE TOKEN FUNCTION ===============
    function createToken(user){
      var payload = {
-       sub: user.id,
+       sub: user._id,
        iat: moment.unix(),
        //save token 14 days
        exp: moment().add(14,'days').unix
