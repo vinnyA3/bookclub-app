@@ -4,10 +4,10 @@ var jwt = require('jwt-simple'),
 
 // =============== AUTHENTICATION MIDDLEWARE ===============================
 exports.ensureAuthenticated = function(req,res,next){
-  if(!req.headers.authorization){
+  if(!req.header('Authorization')) {
     return res.status(401).send({message: 'Please make sure that your request has an Authorization header! Login or Signup.'});
   }
-  var token = req.headers.authorization.split(' ')[1];
+  var token = req.header('Authorization').split(' ')[1];
 
   var payload = null;
   try{
