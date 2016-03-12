@@ -7,7 +7,7 @@ angular.module('appRoutes',['ui.router'])
           //main - intro page
           '':{templateUrl:'app/views/pages/auth.html', controller: 'authController as authenticate'},
           resolve: {
-            skipIfLoggedIn: skipIfLoggedIn
+            skipIfLoggedIn: ['$q','$auth', skipIfLoggedIn]
           }
         }
       })
@@ -25,7 +25,7 @@ angular.module('appRoutes',['ui.router'])
             'nav@account': {templateUrl: 'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
           },
           resolve: {
-					    loginRequired: loginRequired
+					    loginRequired: ['$q','$location', '$auth', loginRequired]
 				  }
       })
       .state('inbox', {
@@ -35,7 +35,7 @@ angular.module('appRoutes',['ui.router'])
            'nav@inbox':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
          },
          resolve: {
-				   	loginRequired: loginRequired
+				   	loginRequired: ['$q','$location', '$auth', loginRequired]
 				 }
       })
       .state('your-books',{
@@ -45,7 +45,7 @@ angular.module('appRoutes',['ui.router'])
            'nav@your-books':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
          },
          resolve: {
-				  	loginRequired: loginRequired
+				  	loginRequired: ['$q','$location', '$auth', loginRequired]
 				 }
       })
       .state('user',{
@@ -55,7 +55,7 @@ angular.module('appRoutes',['ui.router'])
           'nav@user':{templateUrl:'app/views/partials/navbar.html', controller: 'navbarController as navbar'}
         },
         resolve: {
-					loginRequired: loginRequired
+					loginRequired: ['$q','$location', '$auth', loginRequired]
 				}
       });
 
