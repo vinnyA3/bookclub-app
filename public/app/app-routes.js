@@ -1,5 +1,5 @@
 angular.module('appRoutes',['ui.router'])
-  .config(function['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider){
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
     $stateProvider
       .state('auth', {
         url: '/',
