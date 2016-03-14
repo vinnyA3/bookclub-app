@@ -1,8 +1,7 @@
 angular.module('inboxCtrl', ['inboxService'])
   .controller('inboxController', ['Inbox', function(Inbox){
 
-    var vm = this,
-        currentUser = null;
+    var vm = this;
 
     vm.noRequests = false;
     vm.noRequestMessage = 'There are no book swap requests.';
