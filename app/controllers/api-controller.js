@@ -199,10 +199,11 @@ exports.updateAccountInfo = function(req,res){
 };
 
 exports.deleteAccount = function(req,res){
-  User.findOneAndRemove({'_id':req.user}, function(err){
-    if(err){
-      return res.send(err);
-    }
-    return res.send({message: 'successfully deleted!'});
-  });
-}
+  User.find({'_id':req.user})
+      .remove(function(err){
+        if(err){
+          return res.send(err);
+        }
+        return res.send({message: 'successfully deleted!'});
+      });
+};
