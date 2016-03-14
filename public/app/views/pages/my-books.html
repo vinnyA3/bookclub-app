@@ -5,7 +5,7 @@
   <div class="your-books-add-container box">
     <div class="your-books-add-container-form">
       <h1><i class="fa fa-plus"></i> Add a Book</h1>
-      <form ng-submit="books.addBook()" class="your-books-add-container-form">
+      <form ng-submit="books.addBook()" >
         <input ng-model="books.book.title" class="your-books-add-container-form-title" type="text" placeholder="Book Title">
         <input class="your-books-add-container-form-submit" type="submit" value="Add">
       </form>
@@ -13,6 +13,7 @@
   </div>
 
   <h1>&nbsp;Your books</h1>
+  <p>&nbsp;&nbsp; <b>** Click a book to delete it. **</b></p>
   <!-- Book Component -->
   <div class="book-component-wrapper">
     <div ng-repeat="book in books.yourBooks" class="book-container">
