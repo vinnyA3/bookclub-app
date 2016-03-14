@@ -13,26 +13,28 @@
   /* A centered div above the overlay with a box shadow. */
   z-index:10000;
   position: fixed;
-  padding:8px;
-  max-width: 50%;
+  padding:20px;
+  width: 95%;
   /* Center the dialog */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
-
   background-color: #fff;
   box-shadow: 4px 4px 80px #000;
+  @include break(md) {
+    width: auto;
+  }
 }
 .ng-modal-dialog-content {
-  padding:20px;
   text-align: center;
   font-size: 1.2em;
 }
   .ng-modal-dialog-content input[type="text"]{
     height: 35px;
     padding:12px;
+    max-width: 60%;
   }
   .ng-modal-submit{
     @include main-button;
