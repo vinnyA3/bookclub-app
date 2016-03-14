@@ -28,5 +28,8 @@
     "morgan": "^1.7.0",
     "node-sass": "^3.4.2",
     "node-sass-middleware": "^0.9.7"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.14"
   }
 }
