@@ -35,6 +35,9 @@
       .drawer-nav-creator-list-item{
         list-style-type: none;
         display: inline;
+        &:hover{
+          cursor: pointer;
+        }
       }
     }
     .drawer-nav-profile-inbox{
