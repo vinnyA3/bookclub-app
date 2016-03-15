@@ -67,3 +67,15 @@
              cursor: pointer;
            }
         }
+
+/*form group styling*/
+.help-block{
+  position: relative;
+  top:-18px;
+  padding-left:30px;
+  color:rgb(219, 57, 57);
+  text-align: left;
+}
+.form-group.has-error > input{
+  outline: 1px solid rgba(255,0,0,0.6);
+}
