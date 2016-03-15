@@ -5,17 +5,55 @@
 
       <div class="auth-container-view-switch" ng-switch on="authenticate.selection">
 
-        <form name="auth-form" ng-submit="authenticate.login()" ng-switch-when="login" class="auth-container-login">
-          <input ng-model="authenticate.user.email" class="auth-container-login-email" name="email" type="text" placeholder="&#xf1fa; &nbsp;Email"><br>
-          <input ng-model="authenticate.user.password" class="auth-container-login-password" name="password" type="password" placeholder="&#xf023; &nbsp;Password"><br>
+        <form name="auth-form" ng-submit="authenticate.login()" ng-switch-when="login" class="auth-container-login" novalidate>
+          <div class="form-group">
+            <input class="auth-container-login-email" name="email" type="email" placeholder="&#xf1fa; &nbsp;Email"
+              ng-model="authenticate.user.email">
+          </div>
+
+          <div class="form-group">
+            <input ng-model="authenticate.user.password" class="auth-container-login-password" name="password" type="password" placeholder="&#xf023; &nbsp;Password">
+          </div>
+
           <input type="submit" class="auth-container-login-submit" value="Login">
           <span class="authenticate-switch-text">Not registered? <span class="authenticate-switch-text-link" ng-click="authenticate.select(1)">Sign Up!</span></span>
         </form>
 
-        <form name="login-form" ng-submit="authenticate.signup()" ng-switch-when="signup" class="auth-container-login">
-          <input ng-model="authenticate.user.name" class="auth-container-login-email" name="name" type="text" placeholder="&#xf007; &nbsp;Name"><br>
-          <input ng-model="authenticate.user.email" class="auth-container-login-email" name="email" type="text" placeholder="&#xf1fa; &nbsp;Email"><br>
-          <input ng-model="authenticate.user.password" class="auth-container-login-password" name="password" type="password" placeholder="&#xf023; &nbsp;Password"><br>
+        <!-- SIGNUP -->
+
+        <form name="authenticate.signupForm" ng-submit="authenticate.signup(signUpForm)" ng-switch-when="signup" class="auth-container-login" novalidate>
+          <div class="form-group" ng-class="{ 'has-error': authenticate.signupForm.name.$dirty && authenticate.signupForm.name.$invalid }">
+            <input class="auth-container-login-email" name="name" type="text" placeholder="&#xf007; &nbsp;Name"
+              ng-model="authenticate.user.name"
+              ng-maxlength = "20"
+              required
+            >
+            <div class="help-block" ng-messages="authenticate.signupForm.name.$error" ng-if="authenticate.signupForm.name.$dirty" role="alert">
+              <div ng-messages-include="app/views/partials/messages.html"></div>
+            </div>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error': authenticate.signupForm.email.$dirty && authenticate.signupForm.email.$invalid }">
+            <input type="email" name="email" ng-model="authenticate.user.email" class="auth-container-login-email" placeholder="&#xf1fa; &nbsp;Email"
+              ng-maxlength = "25"
+              required
+            >
+            <div class="help-block" ng-messages="authenticate.signupForm.email.$error" ng-show="authenticate.signupForm.email.$dirty" role="alert">
+              <div ng-messages-include="app/views/partials/messages.html"></div>
+           </div>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-error': authenticate.signupForm.password.$dirty && authenticate.signupForm.password.$invalid }">
+            <input class="auth-container-login-password" name="password" type="password" placeholder="&#xf023; &nbsp;Password"
+              ng-model="authenticate.user.password"
+              minlength = "6"
+              required
+            >
+            <div class="help-block" ng-messages="authenticate.signupForm.password.$error" ng-show="authenticate.signupForm.password.$dirty" role="alert">
+             <div ng-messages-include="app/views/partials/messages.html"></div>
+           </div>
+          </div>
+
           <input type="submit" class="auth-container-login-submit" value="Sign Up">
           <span class="authenticate-switch-text">Already a member? <span class="authenticate-switch-text-link" ng-click="authenticate.select(0)">Login</span></span>
         </form>
