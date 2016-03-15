@@ -59,8 +59,9 @@ angular.module('inboxCtrl', ['inboxService'])
       var bookRequestId = vm.bookRequestsForUser[index]._id;
       Inbox.setApproval(bookRequestId)
         .then(function(data){
-          //clear the bookRequestsForUser arr and refresh the inbox
+          //clear the bookRequestsForUser/outstandingBookRequests arr and refresh the inbox
           vm.bookRequestsForUser = [];
+          vm.outstandingBookRequests = [];
           vm.getRequests();
         })
         .catch(function(data){
