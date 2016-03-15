@@ -8,11 +8,11 @@ Link to app: https://stark-island-14379.herokuapp.com/
 Want to install locally and play around?
 
 * Install Node/NPM if you haven't already done so.
-* Clone the Repo: git clone https://github.com/vinnyA3/bookclub-app.git
-* Run NPM install: npm install 
-* In config/config.js, comment out the remote db, and uncomment the local one (change db name as you see fit) 
+* Clone the Repo: `git clone https://github.com/vinnyA3/bookclub-app.git`
+* Navigate into project directory and run NPM install: `cd bookclub_app && npm install` 
+* In config/config.js, comment out the remote db and uncomment the local one (change db name as you see fit).  Also, add a secret string to be used in token authentication.
 * Have fun!
 
-Note: Webpack is used to compile the JS files, so run: NODE_ENV=production webpack  - this will minify the outfile (scripts.min.js) and de-dupe all the unnecessary code.  
+Note: Webpack is used to compile the JS files, `so run: NODE_ENV=production webpack`  - this will minify the output file (scripts.min.js) and de-dupe all the unnecessary code.  
 
 
