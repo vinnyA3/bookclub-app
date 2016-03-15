@@ -16,6 +16,9 @@ angular.module('appRoutes',['ui.router'])
           views:{
             '':{templateUrl:'app/views/pages/home.html', controller: 'libraryController as library'},
             'nav@home': {templateUrl: 'app/views/partials/navbar.html', controller: 'navbarController as navbar'},
+          },
+          resolve: {
+              loginRequired: ['$q','$location', '$auth', loginRequired]
           }
       })
       .state('account', {
