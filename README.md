@@ -13,6 +13,6 @@ Want to install locally and play around?
 * In config/config.js, comment out the remote db and uncomment the local one (change db name as you see fit).  Also, add a secret string to be used in token authentication.
 * Have fun!
 
-Note: Webpack is used to compile the JS files, `so run: NODE_ENV=production webpack`  - this will minify the output file (scripts.min.js) and de-dupe all the unnecessary code.  
+Note: Webpack is used to compile the JS files, so run: `NODE_ENV=production webpack`  - this will minify the output file (scripts.min.js) and de-dupe all the unnecessary code.  
 
 
