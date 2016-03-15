@@ -2,6 +2,7 @@ angular.module('mainApp',[
   'ui.router',
   'satellizer',
   'ui.gravatar',
+  'ngMessages',
   //controllerz
   'libraryCtrl',
   'yourBooksCtrl',
