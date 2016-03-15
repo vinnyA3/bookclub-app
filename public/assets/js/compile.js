@@ -1,5 +1,6 @@
 require('./angular.min.js');
 require('./angular-gravatar.min.js');
+require('./angular-messages.min.js');
 require('./angular-ui-router.min.js');
 require('./satellizer.min.js');
 require('../../app/controllers/libraryController.js');
