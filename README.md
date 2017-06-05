@@ -1,3 +1,6 @@
+**Note:** This is an old app.  I'm currently designing a new version [here.](https://github.com/vinnyA3/swap-n-go-redux)
+==========
+
 #Swap N' Go Book Club
 
 Description: This is a Full-Stack JavaScript, book-swapping platform.  Create an account, post books that you are willing to swap, or make a request for a book.  
